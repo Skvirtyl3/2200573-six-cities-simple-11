@@ -1,32 +1,29 @@
+import { RoomParameter } from '../../types/room';
+
 type CardProps = {
-  isPremium: boolean;
-  imgSrc: string;
-  price: number;
-  isNight: boolean;
-  rating: 1 | 2 | 3 | 4 | 5;
-  name: string;
-  type: 'Private room' | 'Apartment';
+  roomParameter: RoomParameter;
 }
 
 function Card(props:CardProps): JSX.Element
 {
-  const ratingWidth: string = (props.rating * 20).toString().concat('%');
+  const {roomParameter} = props;
+  const ratingWidth: string = (roomParameter.rating * 20).toString().concat('%');
   return(
     <article className="cities__card place-card">
-      {props.isPremium &&
+      {roomParameter.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
       </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="\#">
-          <img className="place-card__image" src={props.imgSrc} width="260" height="200" alt="Place imаge" />
+          <img className="place-card__image" src={roomParameter.imgSrc} width="260" height="200" alt="Place imаge" />
         </a>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{props.price}</b>
-            <span className="place-card__price-text">&#47;&nbsp;{props.isNight ? 'night' : ''}</span>
+            <b className="place-card__price-value">&euro;{roomParameter.price}</b>
+            <span className="place-card__price-text">&#47;&nbsp;{roomParameter.isNight ? 'night' : ''}</span>
           </div>
 
         </div>
@@ -37,9 +34,9 @@ function Card(props:CardProps): JSX.Element
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="\#">{props.name}</a>
+          <a href="\#">{roomParameter.name}</a>
         </h2>
-        <p className="place-card__type">{props.type}</p>
+        <p className="place-card__type">{roomParameter.type}</p>
       </div>
     </article>);}
 

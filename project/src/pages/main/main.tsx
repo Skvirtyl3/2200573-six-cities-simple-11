@@ -1,7 +1,9 @@
 import Card from '../../components/card/card';
+import { RoomParameter } from '../../types/room';
 
 type MainProps = {
   settigCount: number;
+  roomParameters: RoomParameter[];
 }
 
 
@@ -67,29 +69,7 @@ function Main(props: MainProps): JSX.Element
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <Card isPremium imgSrc={'img/apartment-01.jpg'} price={120}
-                isNight rating={4} name={'Beautiful &amp; luxurious apartment at great location'}
-                type = {'Apartment'}
-              />
-              <Card isPremium={false} imgSrc={'img/room.jpg'} price={80}
-                isNight rating={4} name={'Wood and stone place'}
-                type = {'Private room'}
-              />
-
-              <Card isPremium={false} imgSrc={'img/apartment-02.jpg'} price={132}
-                isNight rating={4} name={'Canal View Prinsengracht'}
-                type = {'Apartment'}
-              />
-
-              <Card isPremium imgSrc={'img/apartment-03.jpg'} price={180}
-                isNight rating={5} name={'Nice, cozy, warm big bed apartment'}
-                type = {'Apartment'}
-              />
-
-              <Card isPremium={false} imgSrc={'img/room.jpg'} price={80}
-                isNight rating={4} name={'Wood and stone place'}
-                type = {'Private room'}
-              />
+              {props.roomParameters.map((item) => <Card key={item.key} roomParameter={item}/>)}
             </div>
           </section>
           <div className="cities__right-section">
