@@ -1,11 +1,11 @@
 import Card from '../../components/card/card';
 import Logo from '../../components/logo/logo';
-import { RoomParameter } from '../../types/room';
+import { OfferParameter } from '../../types/offers';
 import { Helmet } from 'react-helmet-async';
 
 type MainProps = {
   settigCount: number;
-  roomParameters: RoomParameter[];
+  roomParameters: OfferParameter[];
 }
 
 function Main(props: MainProps): JSX.Element

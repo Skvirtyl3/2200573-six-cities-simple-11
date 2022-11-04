@@ -1,7 +1,7 @@
-import { RoomParameter } from '../../types/room';
+import { OfferParameter } from '../../types/offers';
 
 type CardProps = {
-  roomParameter: RoomParameter;
+  roomParameter: OfferParameter;
 }
 
 function Card(props:CardProps): JSX.Element

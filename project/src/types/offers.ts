@@ -6,12 +6,12 @@ export enum Rating {
   Five = 5
 }
 
-export enum TypeRoom {
+export enum TypeOffer {
   PrivateRoom = 'Private room',
   Apartment = 'Apartment'
 }
 
-export type RoomParameter = {
+export type OfferParameter = {
   key: string;
   isPremium: boolean;
   imgSrc: string;
@@ -19,5 +19,5 @@ export type RoomParameter = {
   isNight: boolean;
   rating: Rating;
   name: string;
-  type: TypeRoom;
+  type: TypeOffer;
 }
