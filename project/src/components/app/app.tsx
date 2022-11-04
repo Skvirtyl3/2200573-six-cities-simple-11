@@ -1,5 +1,12 @@
 import Main from '../../pages/main/main';
 import { Rating, RoomParameter, TypeRoom } from '../../types/room';
+import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import Room from '../../pages/room/room';
+import Login from '../../pages/login/login';
+import PageNotFound from '../../pages/page-not-found/page-not-found';
+import PrivateRoute from '../private-route/private-route';
+import { HelmetProvider } from 'react-helmet-async';
 
 const roomParameters: RoomParameter[] =
 [{
@@ -59,7 +66,34 @@ type AppProps = {
 }
 
 function App(props: AppProps): JSX.Element {
-  return <Main settigCount={props.settigCount} roomParameters={roomParameters}/>;
+  return (
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Main}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <Main settigCount={props.settigCount} roomParameters={roomParameters}/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.Room}
+            element={<Room />}
+          />
+          <Route
+            path={AppRoute.Login}
+            element={<Login />}
+          />
+          <Route
+            path="*"
+            element={<PageNotFound />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
+  );
 }
 
 export default App;
