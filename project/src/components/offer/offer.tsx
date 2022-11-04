@@ -1,12 +1,12 @@
-import { OfferParameter } from '../../types/offers';
+import { OfferParameter } from '../../types/offer';
 
 type CardProps = {
-  roomParameter: OfferParameter;
+  offerParameter: OfferParameter;
 }
 
 function Card(props:CardProps): JSX.Element
 {
-  const {roomParameter} = props;
+  const {offerParameter: roomParameter} = props;
   const ratingWidth: string = (roomParameter.rating * 20).toString().concat('%');
   return(
     <article className="cities__card place-card">

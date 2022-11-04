@@ -6,7 +6,7 @@ import Login from '../../pages/login/login';
 import PageNotFound from '../../pages/page-not-found/page-not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import { OfferParameter } from '../../types/offers';
+import { OfferParameter } from '../../types/offer';
 
 
 type AppProps = {
@@ -23,7 +23,7 @@ function App({settigCount, offers}:AppProps): JSX.Element {
             path={AppRoute.Main}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <Main settigCount={settigCount} roomParameters={offers}/>
+                <Main settigCount={settigCount} offerParameters={offers}/>
               </PrivateRoute>
             }
           />

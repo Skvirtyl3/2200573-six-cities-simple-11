@@ -1,4 +1,4 @@
-import { Rating, OfferParameter, TypeOffer } from '../types/offers';
+import { Rating, OfferParameter, TypeOffer } from '../types/offer';
 
 export const roomParameters: OfferParameter[] =
 [{
