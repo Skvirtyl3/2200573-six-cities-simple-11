@@ -2,6 +2,7 @@ import { OfferParameter } from '../../types/offer';
 
 type CardProps = {
   offerParameter: OfferParameter;
+  onMouseEnter: (id:string) => void;
 }
 
 function Card(props:CardProps): JSX.Element
@@ -9,7 +10,12 @@ function Card(props:CardProps): JSX.Element
   const {offerParameter: roomParameter} = props;
   const ratingWidth: string = (roomParameter.rating * 20).toString().concat('%');
   return(
-    <article className="cities__card place-card">
+    <article
+      onMouseEnter={(event) => {
+        props.onMouseEnter(props.offerParameter && props.offerParameter.key);
+      }}
+      className="cities__card place-card"
+    >
       {roomParameter.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>

@@ -1,13 +1,22 @@
 import { OfferParameter } from '../../types/offer';
 import Card from '../offer/offer';
+import {useState} from 'react';
 
 type OffersListProps = {
   settigCount: number;
   offerParameters: OfferParameter[];
 }
 
+const OffersListState = {
+  focus: ''
+};
+
+
 function OffersList({settigCount, offerParameters}:OffersListProps): JSX.Element
 {
+  const [focus, setFocus] = useState(OffersListState);
+  //eslint-disable-next-line
+  console.log('Активный оффер:'.concat(focus && focus.focus));
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
@@ -28,7 +37,7 @@ function OffersList({settigCount, offerParameters}:OffersListProps): JSX.Element
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {offerParameters.map((item) => <Card key={item.key} offerParameter={item}/>)}
+        {offerParameters.map((item) => <Card key={item.key} offerParameter={item} onMouseEnter={(id:string) => setFocus({...focus, focus: id})}/>)}
       </div>
     </section>
   );
