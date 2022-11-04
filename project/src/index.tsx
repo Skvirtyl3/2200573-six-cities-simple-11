@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { roomParameters } from './mocks/offers';
 
 const Setting = {
   Count:  312,
@@ -13,6 +12,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App settigCount = {Setting.Count} offers={roomParameters}/>
+    <App settigCount = {Setting.Count}/>
   </React.StrictMode>,
 );
