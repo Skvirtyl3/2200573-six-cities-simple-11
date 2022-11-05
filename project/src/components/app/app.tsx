@@ -28,8 +28,8 @@ function App({settigCount, offers}:AppProps): JSX.Element {
             }
           />
           <Route
-            path={AppRoute.Room}
-            element={<Room />}
+            path={AppRoute.RoomById}
+            element={<Room offerParameters={offers}/>}
           />
           <Route
             path={AppRoute.Login}

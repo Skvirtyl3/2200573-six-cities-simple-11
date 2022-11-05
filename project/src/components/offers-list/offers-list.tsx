@@ -1,5 +1,5 @@
 import { OfferParameter } from '../../types/offer';
-import Card from '../offer/offer';
+import Offer from '../offer/offer';
 import {useState} from 'react';
 
 type OffersListProps = {
@@ -37,7 +37,7 @@ function OffersList({settigCount, offerParameters}:OffersListProps): JSX.Element
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {offerParameters.map((item) => <Card key={item.key} offerParameter={item} onMouseEnter={(id:string) => setFocus({...focus, focus: id})}/>)}
+        {offerParameters.map((item) => <Offer key={item.key} offerParameter={item} onMouseEnter={(id:string) => setFocus({...focus, focus: id})}/>)}
       </div>
     </section>
   );

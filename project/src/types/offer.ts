@@ -11,6 +11,23 @@ export enum TypeOffer {
   Apartment = 'Apartment'
 }
 
+export enum ListWhatsInside {
+  WiFi = 'Wi-Fi',
+  Heating = 'Heating',
+  Kitchen = 'Kitchen',
+  Fridge = 'Fridge',
+  WashingMachine = 'Washing machine',
+  CoffeeMachine = 'Coffee machine',
+  Dishwasher = 'Dishwasher',
+  Towels = 'Towels',
+  BabySeat = 'Baby seat',
+  CabelTV = 'Cabel TV'
+}
+
+export enum Rank {
+  Pro = 'Pro'
+}
+
 export type OfferParameter = {
   key: string;
   isPremium: boolean;
@@ -20,4 +37,15 @@ export type OfferParameter = {
   rating: Rating;
   name: string;
   type: TypeOffer;
+  countBedrooms: number;
+  countAdults: number;
+  whatsInside: (string | ListWhatsInside)[];
+  host: Host;
+  desription: string;
+}
+
+export type Host = {
+  name: string;
+  rank: Rank;
+  avatar: string;
 }
