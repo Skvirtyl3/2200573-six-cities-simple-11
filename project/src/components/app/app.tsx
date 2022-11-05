@@ -7,6 +7,7 @@ import PageNotFound from '../../pages/page-not-found/page-not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import { OfferParameter } from '../../types/offer';
+import Scroll from '../sroll/scroll';
 
 
 type AppProps = {
@@ -18,6 +19,7 @@ function App({settigCount, offers}:AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <Scroll />
         <Routes>
           <Route
             path={AppRoute.Main}
