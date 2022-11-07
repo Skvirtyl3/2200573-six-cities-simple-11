@@ -42,6 +42,7 @@ export type OfferParameter = {
   whatsInside: (string | ListWhatsInside)[];
   host: Host;
   desription: string;
+  point: string | undefined | null;
 }
 
 export type Host = {

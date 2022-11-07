@@ -3,6 +3,9 @@ import { OfferParameter } from '../../types/offer';
 import { Helmet } from 'react-helmet-async';
 import LocationsNav from '../../components/locations-nav/locations-nav';
 import OffersList from '../../components/offers-list/offers-list';
+import { city, points } from '../../mocks/map';
+import { ZOOM_MAP_GLOBAL } from '../../const';
+import Map from '../../components/map/map';
 
 type MainProps = {
   settigCount: number;
@@ -27,7 +30,7 @@ function Main(props: MainProps): JSX.Element
           <div className="cities__places-container container">
             <OffersList settigCount={props.settigCount} offerParameters={props.offerParameters} />
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map" style={{backgroundImage: 'none'}}><Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL}/></section>
             </div>
           </div>
         </div>

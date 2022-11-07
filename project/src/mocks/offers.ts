@@ -19,7 +19,8 @@ export const roomParameters: OfferParameter[] =
     rank: Rank.Pro,
     avatar: 'img/avatar-angelina.jpg'
   },
-  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.'
+  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+  point: 'Point1'
 },
 {
   key: 'bd192257-2695-4f76-8814-4fe3490acc83',
@@ -39,7 +40,8 @@ export const roomParameters: OfferParameter[] =
     rank: Rank.Pro,
     avatar: 'img/avatar-angelina.jpg'
   },
-  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.'
+  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+  point: 'Point2'
 
 },
 {
@@ -60,7 +62,8 @@ export const roomParameters: OfferParameter[] =
     rank: Rank.Pro,
     avatar: 'img/avatar-angelina.jpg'
   },
-  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.'
+  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+  point: 'Point3'
 
 },
 {
@@ -81,8 +84,8 @@ export const roomParameters: OfferParameter[] =
     rank: Rank.Pro,
     avatar: 'img/avatar-angelina.jpg'
   },
-  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.'
-
+  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+  point: 'Point4'
 },
 {
   key: '6c253e7f-a5fe-4ec9-8d99-2d86f72cc308',
@@ -102,7 +105,7 @@ export const roomParameters: OfferParameter[] =
     rank: Rank.Pro,
     avatar: 'img/avatar-angelina.jpg'
   },
-  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.'
-
+  desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+  point: null
 },
 ];
