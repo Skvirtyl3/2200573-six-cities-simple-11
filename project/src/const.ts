@@ -12,3 +12,5 @@ export enum AuthorizationStatus
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN'
 }
+
+export const MIN_REQURID_SYMBOL_COUNT = 50;
