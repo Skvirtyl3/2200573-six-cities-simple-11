@@ -1,5 +1,6 @@
 import { ReviewType } from '../../types/review';
 import moment from 'moment';
+import { GetRatingStileByNumber } from '../../helpers/rating';
 
 type ReviewProp = {
   review: ReviewType;
@@ -7,7 +8,7 @@ type ReviewProp = {
 
 function Review({review}:ReviewProp) :JSX.Element
 {
-  const ratingWidth: string = (review.rating * 20).toString().concat('%');
+  const ratingWidth: string = GetRatingStileByNumber(review.rating);
   return(
     <li className="reviews__item">
       {

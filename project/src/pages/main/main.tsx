@@ -5,7 +5,6 @@ import LocationsNav from '../../components/locations-nav/locations-nav';
 import OffersList from '../../components/offers-list/offers-list';
 
 type MainProps = {
-  settigCount: number;
   offerParameters: OfferParameter[];
 }
 
@@ -25,7 +24,7 @@ function Main(props: MainProps): JSX.Element
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <OffersList settigCount={props.settigCount} offerParameters={props.offerParameters} />
+            <OffersList offerParameters={props.offerParameters} />
             <div className="cities__right-section">
               <section className="cities__map map"></section>
             </div>

@@ -6,6 +6,7 @@ import Logo from '../../components/logo/logo';
 import OtherOffer from '../../components/other-offer/other-offer';
 import Reviews from '../../components/reviews/reviews';
 import { OfferParameter } from '../../types/offer';
+import { GetRatingStileByNumber } from '../../helpers/rating';
 
 type RoomProps = {
   offerParameters: OfferParameter[];
@@ -21,7 +22,7 @@ function Room({offerParameters}:RoomProps) : JSX.Element
   {
     titleHelmet = (typeof(param.id) === 'string' ? titleHelmet.concat(' ',currentOffer.name ,'.') : titleHelmet );
   }
-  const ratingWidth: string = currentOffer ? (currentOffer.rating * 20).toString().concat('%') : '0%';
+  const ratingWidth: string = currentOffer ? GetRatingStileByNumber(currentOffer.rating) : '0%';
 
   return(
     <div className="page">

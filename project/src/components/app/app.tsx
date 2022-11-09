@@ -11,11 +11,10 @@ import Scroll from '../sroll/scroll';
 
 
 type AppProps = {
-  settigCount: number;
   offers: OfferParameter[];
 }
 
-function App({settigCount, offers}:AppProps): JSX.Element {
+function App({ offers}:AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -25,7 +24,7 @@ function App({settigCount, offers}:AppProps): JSX.Element {
             path={AppRoute.Main}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <Main settigCount={settigCount} offerParameters={offers}/>
+                <Main offerParameters={offers}/>
               </PrivateRoute>
             }
           />
