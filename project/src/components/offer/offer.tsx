@@ -1,23 +1,32 @@
-import { RoomParameter } from '../../types/room';
+import { Link } from 'react-router-dom';
+import { OfferParameter } from '../../types/offer';
+import { AppRoute } from '../../const';
+import { GetRatingStileByNumber } from '../../helpers/rating';
 
-type CardProps = {
-  roomParameter: RoomParameter;
+type OfferProps = {
+  offerParameter: OfferParameter;
+  onMouseEnter?: (id:string) => void;
 }
 
-function Card(props:CardProps): JSX.Element
+function Offer(props:OfferProps): JSX.Element
 {
-  const {roomParameter} = props;
-  const ratingWidth: string = (roomParameter.rating * 20).toString().concat('%');
+  const {offerParameter: roomParameter} = props;
+  const ratingWidth: string = GetRatingStileByNumber(roomParameter.rating);
   return(
-    <article className="cities__card place-card">
+    <article
+      onMouseEnter={(event) => {
+        props.onMouseEnter && props.onMouseEnter(props.offerParameter && props.offerParameter.key);
+      }}
+      className="cities__card place-card"
+    >
       {roomParameter.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
       </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="\#">
+        <Link to={AppRoute.Room.concat('/', props.offerParameter && props.offerParameter.key)} >
           <img className="place-card__image" src={roomParameter.imgSrc} width="260" height="200" alt="Place imаge" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -40,4 +49,4 @@ function Card(props:CardProps): JSX.Element
       </div>
     </article>);}
 
-export default Card;
+export default Offer;
