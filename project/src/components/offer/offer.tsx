@@ -15,9 +15,12 @@ function Offer(props:OfferProps): JSX.Element
   return(
     <article
       onMouseEnter={(event) => {
-        props.onMouseEnter && props.onMouseEnter(props.offerParameter && props.offerParameter.key);
+        props.onMouseEnter && props.onMouseEnter((props.offerParameter && props.offerParameter.point) ?? '');
       }}
       className="cities__card place-card"
+      onMouseLeave={(event) => {
+        props.onMouseEnter && props.onMouseEnter('');
+      }}
     >
       {roomParameter.isPremium &&
       <div className="place-card__mark">

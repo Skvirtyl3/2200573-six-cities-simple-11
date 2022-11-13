@@ -3,12 +3,12 @@ import { OfferParameter } from '../../types/offer';
 import Offer from '../offer/offer';
 
 
-type OtherOfferProps = {
+type OffersOtherProps = {
   offerParameters: OfferParameter[];
   currentOfferKey: string; //ид текущего отображаемого оффера, исключаем его из перечня, чтобы в блоке "Other places in the neighbourhood" он не отобразился
 }
 
-function OtherOffer({offerParameters,currentOfferKey}:OtherOfferProps) : JSX.Element
+function OffersOther({offerParameters,currentOfferKey}:OffersOtherProps) : JSX.Element
 {
   const otherOffer = offerParameters.filter((item) => item.key !== currentOfferKey);
   return(
@@ -23,4 +23,4 @@ function OtherOffer({offerParameters,currentOfferKey}:OtherOfferProps) : JSX.Ele
   );
 }
 
-export default OtherOffer;
+export default OffersOther;

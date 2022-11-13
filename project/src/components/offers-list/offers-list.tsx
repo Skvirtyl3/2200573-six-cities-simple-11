@@ -1,17 +1,14 @@
 import { OfferParameter } from '../../types/offer';
 import Offer from '../offer/offer';
-import {useState} from 'react';
 
 type OffersListProps = {
   offerParameters: OfferParameter[];
+  onMouseEnter: (id:string) => void;
 }
 
 
-function OffersList({offerParameters}:OffersListProps): JSX.Element
+function OffersList({offerParameters, onMouseEnter}:OffersListProps): JSX.Element
 {
-  const [focus, setFocus] = useState('');
-  //eslint-disable-next-line
-  console.log('Активный оффер:'.concat(focus));
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
@@ -32,7 +29,7 @@ function OffersList({offerParameters}:OffersListProps): JSX.Element
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {offerParameters.map((item) => <Offer key={item.key} offerParameter={item} onMouseEnter={(id:string) => setFocus(id)}/>)}
+        {offerParameters.map((item) => <Offer key={item.key} offerParameter={item} onMouseEnter={onMouseEnter}/>)}
       </div>
     </section>
   );

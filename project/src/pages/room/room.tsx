@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Gallery from '../../components/gallery/gallery';
 import Logo from '../../components/logo/logo';
-import OtherOffer from '../../components/other-offer/other-offer';
+import OffersOther from '../../components/offers-other/offers-other';
 import Reviews from '../../components/reviews/reviews';
 import { OfferParameter } from '../../types/offer';
 import { city, points } from '../../mocks/map';
@@ -124,7 +124,7 @@ function Room({offerParameters}:RoomProps) : JSX.Element
           </section>
         }
         <div className="container">
-          <OtherOffer offerParameters={offerParameters} currentOfferKey={(currentOffer && currentOffer.key) || ''}/>
+          <OffersOther offerParameters={offerParameters} currentOfferKey={(currentOffer && currentOffer.key) || ''}/>
         </div>
       </main>
     </div>
