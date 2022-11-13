@@ -1,7 +1,7 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker} from 'leaflet';
 import useMap from '../../hooks/useMap';
-import {City, Point} from '../../types/map';
+import {City, Point, StyleMap} from '../../types/map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import 'leaflet/dist/leaflet.css';
 
@@ -11,6 +11,7 @@ type MapProps = {
   selectedPointKey?: string | undefined | null; //точка выбранного предложения /offer/id
   hoveredPointKey?: string | undefined | null; //точка предложения из активнаой карточки из списка
   zoom: number;
+  styleMap: StyleMap;
 };
 
 const defaultCustomIcon = new Icon({
@@ -31,9 +32,12 @@ const hoveredCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
+const styleMapMain = {height: '500px'};
+const styleMapRoom = {height: '500px', width: '1000px', marginLeft: 'auto', marginRight: 'auto'};
+
 function FindPointByKey(points: Point[], key: string | undefined | null) : Point | undefined
 {
-  return points.find((item) => key !== undefined && item.title === key);
+  return points.find((item: Point) => key !== undefined && item.title === key);
 }
 
 function GetPointIcon(point: Point, selectedPointKey: string | undefined | null , hoveredPointKey: string | undefined | null) : Icon
@@ -52,7 +56,7 @@ function GetPointIcon(point: Point, selectedPointKey: string | undefined | null 
 }
 
 function Map(props: MapProps): JSX.Element {
-  const {city, points, selectedPointKey, hoveredPointKey, zoom} = props;
+  const {city, points, selectedPointKey, hoveredPointKey, zoom, styleMap} = props;
 
   const selectedPoint = FindPointByKey(points, selectedPointKey);
   const hoveredPoint = FindPointByKey(points, hoveredPointKey);
@@ -74,7 +78,7 @@ function Map(props: MapProps): JSX.Element {
     }
   }, [map, points, selectedPointKey, hoveredPointKey]);
 
-  return <div style={{height: '500px'}} ref={mapRef}></div>;
+  return <div style={ styleMap === StyleMap.Main ? styleMapMain : styleMapRoom} ref={mapRef}></div>;
 }
 
 export default Map;

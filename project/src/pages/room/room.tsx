@@ -11,6 +11,7 @@ import Map from '../../components/map/map';
 import { ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 import { useState } from 'react';
+import { StyleMap } from '../../types/map';
 
 type RoomProps = {
   offerParameters: OfferParameter[];
@@ -125,7 +126,7 @@ function Room({offerParameters}:RoomProps) : JSX.Element
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>
-              <Map city={city} points={points} selectedPointKey={currentOffer.point} hoveredPointKey={hover} zoom={ZOOM_MAP_ROOM} />
+              <Map city={city} points={points} selectedPointKey={currentOffer.point} hoveredPointKey={hover} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
             </section>
           </section>
         }

@@ -7,6 +7,7 @@ import { city, points } from '../../mocks/map';
 import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
 import { useState } from 'react';
+import { StyleMap } from '../../types/map';
 
 type MainProps = {
   offerParameters: OfferParameter[];
@@ -37,7 +38,7 @@ function Main(props: MainProps): JSX.Element
             <OffersList offerParameters={props.offerParameters} onMouseEnter={handleOfferMouseEnter}/>
             <div className="cities__right-section">
               <section className="cities__map map" style={{backgroundImage: 'none'}}>
-                <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} selectedPointKey={hover}/>
+                <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} hoveredPointKey={hover} styleMap={StyleMap.Main}/>
               </section>
             </div>
           </div>
