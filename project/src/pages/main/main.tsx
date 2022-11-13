@@ -8,7 +8,6 @@ import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
 
 type MainProps = {
-  settigCount: number;
   offerParameters: OfferParameter[];
 }
 
@@ -28,7 +27,7 @@ function Main(props: MainProps): JSX.Element
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <OffersList settigCount={props.settigCount} offerParameters={props.offerParameters} />
+            <OffersList offerParameters={props.offerParameters} />
             <div className="cities__right-section">
               <section className="cities__map map" style={{backgroundImage: 'none'}}><Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL}/></section>
             </div>

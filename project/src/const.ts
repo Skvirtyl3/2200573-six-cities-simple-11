@@ -26,3 +26,7 @@ export const LAYER_MAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/
 export const ATTRIBUTE_LAYER_MAP = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
 //#endregion Настройки карты
+
+export const MIN_REQURID_SYMBOL_COUNT = 50;
+export const ONE_STAR_WIDTH = 50;
+export const NEAR_PLACES_COUNT = 3; //сколько офферов мы показываем в "предложениях"

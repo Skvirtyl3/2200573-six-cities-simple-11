@@ -1,9 +1,7 @@
+import { NEAR_PLACES_COUNT } from '../../const';
 import { OfferParameter } from '../../types/offer';
 import Offer from '../offer/offer';
 
-const Setting = {
-  Count:  3 //сколько офферов мы показываем в "предложениях"
-} as const;
 
 type OtherOfferProps = {
   offerParameters: OfferParameter[];
@@ -17,7 +15,7 @@ function OtherOffer({offerParameters,currentOfferKey}:OtherOfferProps) : JSX.Ele
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        {otherOffer.slice(0, Setting.Count).map((item, index) =>
+        {otherOffer.slice(0, NEAR_PLACES_COUNT).map((item) =>
           <Offer key={item.key} offerParameter={item} />
         )}
       </div>

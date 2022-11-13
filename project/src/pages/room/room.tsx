@@ -9,6 +9,7 @@ import { OfferParameter } from '../../types/offer';
 import { city, points } from '../../mocks/map';
 import Map from '../../components/map/map';
 import { ZOOM_MAP_ROOM } from '../../const';
+import { GetRatingStileByNumber } from '../../helpers/rating';
 
 type RoomProps = {
   offerParameters: OfferParameter[];
@@ -24,7 +25,7 @@ function Room({offerParameters}:RoomProps) : JSX.Element
   {
     titleHelmet = (typeof(param.id) === 'string' ? titleHelmet.concat(' ',currentOffer.name ,'.') : titleHelmet );
   }
-  const ratingWidth: string = currentOffer ? (currentOffer.rating * 20).toString().concat('%') : '0%';
+  const ratingWidth: string = currentOffer ? GetRatingStileByNumber(currentOffer.rating) : '0%';
 
   return(
     <div className="page">

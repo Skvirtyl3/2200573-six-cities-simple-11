@@ -3,24 +3,19 @@ import Offer from '../offer/offer';
 import {useState} from 'react';
 
 type OffersListProps = {
-  settigCount: number;
   offerParameters: OfferParameter[];
 }
 
-const OffersListState = {
-  focus: ''
-};
 
-
-function OffersList({settigCount, offerParameters}:OffersListProps): JSX.Element
+function OffersList({offerParameters}:OffersListProps): JSX.Element
 {
-  const [focus, setFocus] = useState(OffersListState);
+  const [focus, setFocus] = useState('');
   //eslint-disable-next-line
-  console.log('Активный оффер:'.concat(focus && focus.focus));
+  console.log('Активный оффер:'.concat(focus));
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{settigCount} places to stay in Amsterdam</b>
+      <b className="places__found">{offerParameters ? offerParameters.length : 0} places to stay in Amsterdam</b>
       <form className="places__sorting" action="\#" method="get">
         <span className="places__sorting-caption">Sort by</span>
         <span className="places__sorting-type" tabIndex={0}>
@@ -37,7 +32,7 @@ function OffersList({settigCount, offerParameters}:OffersListProps): JSX.Element
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {offerParameters.map((item) => <Offer key={item.key} offerParameter={item} onMouseEnter={(id:string) => setFocus({...focus, focus: id})}/>)}
+        {offerParameters.map((item) => <Offer key={item.key} offerParameter={item} onMouseEnter={(id:string) => setFocus(id)}/>)}
       </div>
     </section>
   );
