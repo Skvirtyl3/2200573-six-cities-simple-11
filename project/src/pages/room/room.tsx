@@ -10,6 +10,7 @@ import { city, points } from '../../mocks/map';
 import Map from '../../components/map/map';
 import { ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
+import { useState } from 'react';
 
 type RoomProps = {
   offerParameters: OfferParameter[];
@@ -27,6 +28,11 @@ function Room({offerParameters}:RoomProps) : JSX.Element
   }
   const ratingWidth: string = currentOffer ? GetRatingStileByNumber(currentOffer.rating) : '0%';
 
+  function handleOfferMouseEnter(id:string): void {
+    setHover(id);
+  }
+
+  const [hover, setHover] = useState('');
   return(
     <div className="page">
       <Helmet><title>{titleHelmet}</title></Helmet>
@@ -119,12 +125,12 @@ function Room({offerParameters}:RoomProps) : JSX.Element
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>
-              <Map city={city} points={points} selectedPointKey={currentOffer.point} zoom={ZOOM_MAP_ROOM}/>
+              <Map city={city} points={points} selectedPointKey={currentOffer.point} hoveredPointKey={hover} zoom={ZOOM_MAP_ROOM} />
             </section>
           </section>
         }
         <div className="container">
-          <OffersOther offerParameters={offerParameters} currentOfferKey={(currentOffer && currentOffer.key) || ''}/>
+          <OffersOther offerParameters={offerParameters} currentOfferKey={(currentOffer && currentOffer.key) || ''} onMouseEnter={handleOfferMouseEnter}/>
         </div>
       </main>
     </div>
