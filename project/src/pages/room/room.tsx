@@ -6,6 +6,9 @@ import Logo from '../../components/logo/logo';
 import OtherOffer from '../../components/other-offer/other-offer';
 import Reviews from '../../components/reviews/reviews';
 import { OfferParameter } from '../../types/offer';
+import { city, points } from '../../mocks/map';
+import Map from '../../components/map/map';
+import { ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 
 type RoomProps = {
@@ -115,7 +118,8 @@ function Room({offerParameters}:RoomProps) : JSX.Element
                 <Reviews />
               </div>
             </div>
-            <section className="property__map map">
+            <section className="property__map map" style={{backgroundImage: 'none'}}>
+              <Map city={city} points={points} selectedPointKey={currentOffer.point} zoom={ZOOM_MAP_ROOM}/>
             </section>
           </section>
         }
