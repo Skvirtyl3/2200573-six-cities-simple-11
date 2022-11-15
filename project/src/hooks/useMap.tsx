@@ -45,10 +45,10 @@ function useMap(
 
       //https://mourner.github.io/Leaflet/reference.html#map-maxbounds
       //описываемграницы карты
-      instance.setMaxBounds([
-        [52.32, 4.8],
-        [52.40, 4.96]
-      ]);
+      // instance.setMaxBounds([
+      //   [52.32, 4.8],
+      //   [52.40, 4.96]
+      // ]);
 
       if(isMapMounted)
       {

@@ -3,12 +3,13 @@ import { OfferParameter } from '../../types/offer';
 import Offer from '../offer/offer';
 
 
-type OtherOfferProps = {
+type OffersOtherProps = {
   offerParameters: OfferParameter[];
   currentOfferKey: string; //ид текущего отображаемого оффера, исключаем его из перечня, чтобы в блоке "Other places in the neighbourhood" он не отобразился
+  onMouseEnter: (id:string) => void;
 }
 
-function OtherOffer({offerParameters,currentOfferKey}:OtherOfferProps) : JSX.Element
+function OffersOther({offerParameters, currentOfferKey, onMouseEnter}:OffersOtherProps) : JSX.Element
 {
   const otherOffer = offerParameters.filter((item) => item.key !== currentOfferKey);
   return(
@@ -16,11 +17,11 @@ function OtherOffer({offerParameters,currentOfferKey}:OtherOfferProps) : JSX.Ele
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
         {otherOffer.slice(0, NEAR_PLACES_COUNT).map((item) =>
-          <Offer key={item.key} offerParameter={item} />
+          <Offer key={item.key} offerParameter={item} onMouseEnter={onMouseEnter} />
         )}
       </div>
     </section>
   );
 }
 
-export default OtherOffer;
+export default OffersOther;

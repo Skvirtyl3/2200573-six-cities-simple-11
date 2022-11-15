@@ -1,15 +1,17 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker} from 'leaflet';
 import useMap from '../../hooks/useMap';
-import {City, Point} from '../../types/map';
+import {City, Point, StyleMap} from '../../types/map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
   city: City;
   points: Point[];
-  selectedPointKey?: string | undefined | null;
+  selectedPointKey?: string | undefined | null; //точка выбранного предложения /offer/id
+  hoveredPointKey?: string | undefined | null; //точка предложения из активнаой карточки из списка
   zoom: number;
+  styleMap: StyleMap;
 };
 
 const defaultCustomIcon = new Icon({
@@ -18,18 +20,48 @@ const defaultCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-const currentCustomIcon = new Icon({
+const selectedCustomIcon = new Icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [50, 50],
+  iconAnchor: [20, 50]
+});
+
+const hoveredCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
 
-function Map(props: MapProps): JSX.Element {
-  const {city, points, selectedPointKey, zoom} = props;
+const styleMapMain = {height: '500px'};
+const styleMapRoom = {height: '500px', width: '1000px', marginLeft: 'auto', marginRight: 'auto'};
 
-  const selectedPoint = points.find((item) => selectedPointKey !== undefined && item.title === selectedPointKey);
+function FindPointByKey(points: Point[], key: string | undefined | null) : Point | undefined
+{
+  return points.find((item: Point) => key !== undefined && item.title === key);
+}
+
+function GetPointIcon(point: Point, selectedPointKey: string | undefined | null , hoveredPointKey: string | undefined | null) : Icon
+{
+  if(selectedPointKey !== undefined && point.title === selectedPointKey)
+  {
+    return selectedCustomIcon;
+  }
+
+  if(hoveredPointKey !== undefined && point.title === hoveredPointKey)
+  {
+    return hoveredCustomIcon;
+  }
+
+  return defaultCustomIcon;
+}
+
+function Map(props: MapProps): JSX.Element {
+  const {city, points, selectedPointKey, hoveredPointKey, zoom, styleMap} = props;
+
+  const selectedPoint = FindPointByKey(points, selectedPointKey);
+  const hoveredPoint = FindPointByKey(points, hoveredPointKey);
   const mapRef = useRef(null);
-  const map = useMap(mapRef, selectedPoint !== undefined ? selectedPoint : city, zoom);
+  const map = useMap(mapRef, hoveredPoint || selectedPoint || city, zoom);
 
   useEffect(() => {
     if (map) {
@@ -40,17 +72,13 @@ function Map(props: MapProps): JSX.Element {
         });
 
         marker
-          .setIcon(
-            selectedPointKey !== undefined && point.title === selectedPointKey
-              ? currentCustomIcon
-              : defaultCustomIcon
-          )
+          .setIcon(GetPointIcon(point, selectedPointKey, hoveredPointKey))
           .addTo(map);
       });
     }
-  }, [map, points, selectedPointKey]);
+  }, [map, points, selectedPointKey, hoveredPointKey]);
 
-  return <div style={{height: '500px'}} ref={mapRef}></div>;
+  return <div style={ styleMap === StyleMap.Main ? styleMapMain : styleMapRoom} ref={mapRef}></div>;
 }
 
 export default Map;

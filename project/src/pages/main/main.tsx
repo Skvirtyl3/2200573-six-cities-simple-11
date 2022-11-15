@@ -6,13 +6,21 @@ import OffersList from '../../components/offers-list/offers-list';
 import { city, points } from '../../mocks/map';
 import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
+import { useState } from 'react';
+import { StyleMap } from '../../types/map';
 
 type MainProps = {
   offerParameters: OfferParameter[];
 }
 
+
 function Main(props: MainProps): JSX.Element
 {
+  function handleOfferMouseEnter(id:string): void {
+    setHover(id);
+  }
+
+  const [hover, setHover] = useState('');
   return(
     <div className="page page--gray page--main">
       <Helmet><title>Шесть городов. Поиск предложений.</title></Helmet>
@@ -27,9 +35,11 @@ function Main(props: MainProps): JSX.Element
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <OffersList offerParameters={props.offerParameters} />
+            <OffersList offerParameters={props.offerParameters} onMouseEnter={handleOfferMouseEnter}/>
             <div className="cities__right-section">
-              <section className="cities__map map" style={{backgroundImage: 'none'}}><Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL}/></section>
+              <section className="cities__map map" style={{backgroundImage: 'none'}}>
+                <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} hoveredPointKey={hover} styleMap={StyleMap.Main}/>
+              </section>
             </div>
           </div>
         </div>
