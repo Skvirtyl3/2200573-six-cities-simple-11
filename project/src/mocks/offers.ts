@@ -112,13 +112,13 @@ export const roomParameters: OfferParameter[] =
   city: '4579200e-d9c5-413c-b69b-ae4b92026439'
 },
 {
-  key: '6c253e7f-a5fe-4ec9-8d99-2d86f72cc308',
+  key: 'a3d852ea-8c25-4eb6-a6b7-5fba3e34e4b3',
   isPremium: false,
   imgSrc: 'img/room.jpg',
   price: 80,
   isNight: true,
   rating: Rating.Four,
-  name: 'Wood and stone place',
+  name: 'Парижский Wood and stone place',
   type: TypeOffer.PrivateRoom,
   countBedrooms: 3,
   countAdults: 4,
@@ -130,7 +130,7 @@ export const roomParameters: OfferParameter[] =
     avatar: 'img/avatar-angelina.jpg'
   },
   desription: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
-  point: null,
+  point: 'Point5',
   city: '034b7982-d9d2-4259-bb4f-7dd965ac72e1'
 },
 ];
