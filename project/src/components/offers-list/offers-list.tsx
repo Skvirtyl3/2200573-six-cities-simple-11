@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../hooks';
 import { OfferParameter } from '../../types/offer';
 import Offer from '../offer/offer';
 
@@ -9,10 +10,11 @@ type OffersListProps = {
 
 function OffersList({offerParameters, onMouseEnter}:OffersListProps): JSX.Element
 {
+  const city = useAppSelector((state) => state.city);
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{offerParameters ? offerParameters.length : 0} places to stay in Amsterdam</b>
+      <b className="places__found">{offerParameters ? offerParameters.length : 0} places to stay {city ? 'in '.concat(city.title) : ''}</b>
       <form className="places__sorting" action="\#" method="get">
         <span className="places__sorting-caption">Sort by</span>
         <span className="places__sorting-type" tabIndex={0}>

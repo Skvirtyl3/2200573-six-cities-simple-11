@@ -1,24 +1,23 @@
 import Logo from '../../components/logo/logo';
-import { OfferParameter } from '../../types/offer';
 import { Helmet } from 'react-helmet-async';
-import LocationsNav from '../../components/locations-nav/locations-nav';
+import LocationsNav from '../../components/nav-locations/nav-locations';
 import OffersList from '../../components/offers-list/offers-list';
-import { city, points } from '../../mocks/map';
+import { points } from '../../mocks/map';
 import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
-
-type MainProps = {
-  offerParameters: OfferParameter[];
-}
+import { useAppSelector } from '../../hooks';
 
 
-function Main(props: MainProps): JSX.Element
+function Main(): JSX.Element
 {
   function handleOfferMouseEnter(id:string): void {
     setHover(id);
   }
+
+  const offers = useAppSelector((state) => state.offers);
+  const city = useAppSelector((state) => state.city);
 
   const [hover, setHover] = useState('');
   return(
@@ -35,7 +34,7 @@ function Main(props: MainProps): JSX.Element
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <OffersList offerParameters={props.offerParameters} onMouseEnter={handleOfferMouseEnter}/>
+            <OffersList offerParameters={offers} onMouseEnter={handleOfferMouseEnter}/>
             <div className="cities__right-section">
               <section className="cities__map map" style={{backgroundImage: 'none'}}>
                 <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} hoveredPointKey={hover} styleMap={StyleMap.Main}/>

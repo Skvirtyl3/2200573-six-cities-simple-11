@@ -6,15 +6,22 @@ import Login from '../../pages/login/login';
 import PageNotFound from '../../pages/page-not-found/page-not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import { OfferParameter } from '../../types/offer';
 import Scroll from '../sroll/scroll';
+import { useAppDispatch } from '../../hooks';
+import { useEffect } from 'react';
+import { getOffersByCityId, setCurrentCity } from '../../store/action';
+import {DEFAULT_CITY} from '../../const';
 
 
-type AppProps = {
-  offers: OfferParameter[];
-}
+function App(): JSX.Element {
 
-function App({ offers}:AppProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setCurrentCity(DEFAULT_CITY));
+    dispatch(getOffersByCityId());
+  });
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -24,13 +31,13 @@ function App({ offers}:AppProps): JSX.Element {
             path={AppRoute.Main}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <Main offerParameters={offers}/>
+                <Main/>
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.RoomById}
-            element={<Room offerParameters={offers}/>}
+            element={<Room/>}
           />
           <Route
             path={AppRoute.Login}
