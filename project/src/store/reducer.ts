@@ -1,20 +1,25 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {cityChange, loadOfferByCity} from './action';
-import {DEFAULT_CITY} from '../const';
+import {setCurrentCity, getOffersByCityId} from './action';
 import { roomParameters } from '../mocks/offers';
+import { OfferParameter } from '../types/offer';
+import { City } from '../types/city';
+import { citys } from '../mocks/city';
 
 const initialState = {
-  city: DEFAULT_CITY,
-  offers: { }
+  city: undefined as City | undefined,
+  offers: [] as OfferParameter[]
 };
 
 const reducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(cityChange, (state, action) => {
-      state.city = action.payload;
+    .addCase(setCurrentCity, (state, action) => {
+      const city = citys.find((item) => item.key === action.payload);
+      state.city = city;
     })
-    .addCase(loadOfferByCity, (state) => {
-      state.offers = roomParameters.filter((item) => item.city === state.city);
+    .addCase(getOffersByCityId, (state) => {
+      state.city ?
+        state.offers = roomParameters.filter((item) => state.city && item.city === state.city.key) :
+        state.offers = roomParameters;
     });
 });
 
