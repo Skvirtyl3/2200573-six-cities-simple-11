@@ -9,8 +9,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Scroll from '../sroll/scroll';
 import { useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
-import { getOffersByCityId, setCurrentCity } from '../../store/action';
-import {DEFAULT_CITY} from '../../const';
+import { getCitys, getOffers } from '../../store/action';
 
 
 function App(): JSX.Element {
@@ -18,8 +17,8 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setCurrentCity(DEFAULT_CITY));
-    dispatch(getOffersByCityId());
+    dispatch(getCitys());
+    dispatch(getOffers());
   });
 
   return (

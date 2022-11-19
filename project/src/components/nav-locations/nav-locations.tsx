@@ -1,6 +1,6 @@
 import {citys} from '../../mocks/city';
 import { useAppDispatch } from '../../hooks';
-import { setCurrentCity, getOffersByCityId } from '../../store/action';
+import { setCurrentCity, getOffers } from '../../store/action';
 import NavLocation from '../nav-location/nav-location';
 
 
@@ -11,7 +11,7 @@ function NavLocations(): JSX.Element
     const {value} = e.currentTarget;
 
     dispatch(setCurrentCity(value));
-    dispatch(getOffersByCityId());
+    dispatch(getOffers());
   }
 
   return(

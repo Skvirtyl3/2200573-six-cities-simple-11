@@ -11,13 +11,15 @@ import { ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
-import { useAppSelector } from '../../hooks';
+import { selectFilterCity, selectFilterOffers } from '../../store/selector';
+import { useSelector } from 'react-redux';
 
 
 function Room() : JSX.Element
 {
-  const offers = useAppSelector((state) => state.offers);
-  const city = useAppSelector((state) => state.city);
+
+  const city = useSelector(selectFilterCity);
+  const offers = useSelector(selectFilterOffers);
 
   const param = useParams();
   const currentOffer = offers.find((item) => item.key === param.id);
