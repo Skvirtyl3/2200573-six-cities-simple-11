@@ -1,3 +1,4 @@
+import { OrderOffersEnum } from '../const.js';
 import {store} from '../store/index.js';
 import { City } from '../types/city';
 import { OfferParameter } from '../types/offer';
@@ -10,5 +11,6 @@ export interface IInitialState {
   city: string;
   citys: City[];
   offers: OfferParameter[];
+  orderOffer: OrderOffersEnum;
 }
 
