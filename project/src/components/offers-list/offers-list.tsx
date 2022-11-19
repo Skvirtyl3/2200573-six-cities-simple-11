@@ -1,6 +1,7 @@
-import { useAppSelector } from '../../hooks';
 import { OfferParameter } from '../../types/offer';
 import Offer from '../offer/offer';
+import { selectFilterCity } from '../../store/selector';
+import { useSelector } from 'react-redux';
 
 type OffersListProps = {
   offerParameters: OfferParameter[];
@@ -10,7 +11,7 @@ type OffersListProps = {
 
 function OffersList({offerParameters, onMouseEnter}:OffersListProps): JSX.Element
 {
-  const city = useAppSelector((state) => state.city);
+  const city = useSelector(selectFilterCity);
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>

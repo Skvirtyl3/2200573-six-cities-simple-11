@@ -7,7 +7,8 @@ import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
-import { useAppSelector } from '../../hooks';
+import { selectFilterCity, selectFilterOffers } from '../../store/selector';
+import { useSelector } from 'react-redux';
 
 
 function Main(): JSX.Element
@@ -16,8 +17,8 @@ function Main(): JSX.Element
     setHover(id);
   }
 
-  const offers = useAppSelector((state) => state.offers);
-  const city = useAppSelector((state) => state.city);
+  const city = useSelector(selectFilterCity);
+  const offers = useSelector(selectFilterOffers);
 
   const [hover, setHover] = useState('');
   return(
