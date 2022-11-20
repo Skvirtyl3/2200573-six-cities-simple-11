@@ -2,7 +2,6 @@ import Logo from '../../components/logo/logo';
 import { Helmet } from 'react-helmet-async';
 import LocationsNav from '../../components/nav-locations/nav-locations';
 import OffersList from '../../components/offers-list/offers-list';
-import { points } from '../../mocks/map';
 import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
 import { useState } from 'react';
@@ -20,6 +19,8 @@ function Main(): JSX.Element
 
   const city = useSelector(selectFilterCity);
   const offers = useSelector(selectFilterOffers);
+
+  const points = offers.flatMap((item) => item.location);
 
   const [hover, setHover] = useState(null as Location | undefined | null);
   return(
