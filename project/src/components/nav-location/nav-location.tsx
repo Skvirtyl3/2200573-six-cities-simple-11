@@ -10,13 +10,13 @@ type NavLocationProp = {
 function NavLocation({location, onClick}:NavLocationProp): JSX.Element
 {
   const city = useSelector(selectFilterCity);
-  const isActive = city && location.key === city.key;
+  const isActive = city && location.name === city.name;
   const styleActive = {border: 'none'};
   const styleNotActive = {backgroundColor: 'transparent', border: 'none'};
   return(
     <li className="locations__item">
-      <button style={isActive ? styleActive : styleNotActive} onClick={(event) => {onClick(event);}} className={isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'} value={location.key}>
-        <span>{location.title}</span>
+      <button style={isActive ? styleActive : styleNotActive} onClick={(event) => {onClick(event);}} className={isActive ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'} value={location.name}>
+        <span>{location.name}</span>
       </button>
     </li>
   );

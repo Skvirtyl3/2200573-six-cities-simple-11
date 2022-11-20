@@ -1,3 +1,7 @@
+import { City } from './city';
+import { Host } from './host';
+import { Location } from './location';
+
 export enum Rating {
   One = 1,
   Two = 2,
@@ -11,43 +15,39 @@ export enum TypeOffer {
   Apartment = 'Apartment'
 }
 
-export enum ListWhatsInside {
-  WiFi = 'Wi-Fi',
-  Heating = 'Heating',
-  Kitchen = 'Kitchen',
-  Fridge = 'Fridge',
-  WashingMachine = 'Washing machine',
-  CoffeeMachine = 'Coffee machine',
-  Dishwasher = 'Dishwasher',
-  Towels = 'Towels',
-  BabySeat = 'Baby seat',
-  CabelTV = 'Cabel TV'
-}
 
-export enum Rank {
-  Pro = 'Pro'
-}
-
-export type OfferParameter = {
-  key: string;
-  isPremium: boolean;
-  imgSrc: string;
-  price: number;
-  isNight: boolean;
-  rating: number;
-  name: string;
-  type: TypeOffer;
-  countBedrooms: number;
-  countAdults: number;
-  whatsInside: (string | ListWhatsInside)[];
+export type OfferType =
+{
+  bedrooms: number;
+  city: City;
+  description: string;
+  goods: string[];
   host: Host;
-  desription: string;
-  point: string | undefined | null;
-  city: string;
+  id: number;
+  images: string[];
+  isPremium: boolean;
+  location: Location;
+  maxAdults: number;
+  previewImage: string;
+  price: number;
+  rating: number;
+  title: string;
+  type: string;
 }
 
-export type Host = {
+export type Comment = [{
+  comment: string;
+  date: string;
+  id: number;
+  rating: number;
+  user: Host;
+}]
+
+export type AuhtoriseUser = {
+  avatarUrl: string;
+  email: string;
+  id: number;
+  isPro: boolean;
   name: string;
-  rank: Rank;
-  avatar: string;
+  token: string;
 }
