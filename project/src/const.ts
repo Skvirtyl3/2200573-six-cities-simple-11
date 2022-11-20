@@ -65,3 +65,12 @@ export const DEFAULT_ORDER_OFFERS = OrderOffersEnum.Popular;
 
 export const BACKEND_URL = 'https://11.react.pages.academy/six-cities-simple';
 export const REQUEST_TIMEOUT = 5000;
+
+export enum APIRoute {
+  Hotels = '/hotels',
+  HotelById = '/hotels/:id',
+  HotelNearby = '/hotels/:id/nearby',
+  Comments = '/comments/:id',
+  Login = '/login',
+  Logout = '/logout',
+}
