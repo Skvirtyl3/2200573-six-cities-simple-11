@@ -9,7 +9,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import Scroll from '../sroll/scroll';
 import { useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
-import { getCitys, getOffers } from '../../store/action';
+import { getCitys } from '../../store/action';
+import { fetchHotelAction } from '../../store/api-actions';
 
 
 function App(): JSX.Element {
@@ -18,7 +19,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(getCitys());
-    dispatch(getOffers());
+    dispatch(fetchHotelAction());
   });
 
   return (
