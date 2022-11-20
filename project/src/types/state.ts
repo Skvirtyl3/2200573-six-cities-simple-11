@@ -12,5 +12,6 @@ export interface IInitialState {
   citys: City[];
   offers: OfferType[];
   orderOffer: OrderOffersEnum;
+  isDataLoading: boolean;
 }
 

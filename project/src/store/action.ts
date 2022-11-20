@@ -15,3 +15,8 @@ export const setOrderOffers = createAction('offer/setOrderOffers', (value: Order
   ({
     payload: value
   }));
+export const setDataLoadingStatus = createAction('data/setDataLoadingStatus', (value: boolean) =>
+  ({
+    payload: value
+  }));
+

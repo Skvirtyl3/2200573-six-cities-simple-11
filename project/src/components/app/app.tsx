@@ -7,20 +7,19 @@ import PageNotFound from '../../pages/page-not-found/page-not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import Scroll from '../sroll/scroll';
-import { useAppDispatch } from '../../hooks';
-import { useEffect } from 'react';
-import { getCitys } from '../../store/action';
-import { fetchHotelAction } from '../../store/api-actions';
+import { useAppSelector } from '../../hooks';
+import Loading from '../../pages/loading/loading';
 
 
 function App(): JSX.Element {
 
-  const dispatch = useAppDispatch();
+  const isDataLoading = useAppSelector((state) => state.isDataLoading);
 
-  useEffect(() => {
-    dispatch(getCitys());
-    dispatch(fetchHotelAction());
-  });
+  if (isDataLoading) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <HelmetProvider>
