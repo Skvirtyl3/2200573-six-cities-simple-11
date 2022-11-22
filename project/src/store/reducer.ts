@@ -17,11 +17,11 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(getCitys, (state) => {
-      state.citys = citys;
+    .addCase(getCitys, (state, action) => {
+      state.citys = action.payload;
     })
-    .addCase(getOffers, (state) => {
-      state.offers = roomParameters;
+    .addCase(getOffers, (state, action) => {
+      state.offers = action.payload;
     })
     .addCase(setOrderOffers, (state, action) => {
       state.orderOffer = action.payload;

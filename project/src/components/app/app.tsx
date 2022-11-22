@@ -10,6 +10,8 @@ import Scroll from '../sroll/scroll';
 import { useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
 import { getCitys, getOffers } from '../../store/action';
+import { roomParameters } from '../../mocks/offers';
+import { citys } from '../../mocks/city';
 
 
 function App(): JSX.Element {
@@ -17,8 +19,8 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getCitys());
-    dispatch(getOffers());
+    dispatch(getCitys(citys));
+    dispatch(getOffers(roomParameters));
   });
 
   return (
