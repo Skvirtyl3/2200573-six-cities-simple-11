@@ -1,4 +1,4 @@
-import { OrderOffersEnum } from '../const.js';
+import { AuthorizationStatus, OrderOffersEnum } from '../const.js';
 import {store} from '../store/index.js';
 import { City } from '../types/city';
 import { OfferType } from '../types/offer';
@@ -15,3 +15,6 @@ export interface IInitialState {
   isDataLoading: boolean;
 }
 
+export type UserProcess = {
+  authorizationStatus: AuthorizationStatus;
+};
