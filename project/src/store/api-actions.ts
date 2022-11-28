@@ -5,6 +5,7 @@ import {OfferType} from '../types/offer';
 import {getOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus} from './action';
 import {APIRoute, AuthorizationStatus} from '../const';
 import {AuthData, AuhtoriseUser} from '../types/auhtorise';
+import { dropToken, setToken } from '../services/token';
 
 
 export const fetchHotelAction = createAsyncThunk<void, undefined, {
@@ -31,6 +32,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     const {data: auhtoriseUser} = await api.post<AuhtoriseUser>(APIRoute.Login, {email, password});
     if(auhtoriseUser)
     {
+      setToken(auhtoriseUser.token);
       dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
       dispatch(setAuhtoriseUser(auhtoriseUser));
     }
@@ -45,6 +47,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   'user/logout',
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
+    dropToken();
     dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
   },
 );
@@ -57,8 +60,12 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
     try {
-      await api.get(APIRoute.Login);
-      dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
+      const {data: auhtoriseUser} = await api.get<AuhtoriseUser>(APIRoute.Login);
+      if(auhtoriseUser)
+      {
+        dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
+        dispatch(setAuhtoriseUser(auhtoriseUser));
+      }
     } catch {
       dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
     }

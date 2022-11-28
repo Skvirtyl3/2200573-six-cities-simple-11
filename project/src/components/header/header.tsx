@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setAuhtoriseUser, setAuthorizationStatus } from '../../store/action';
+import { logoutAction } from '../../store/api-actions';
 
 type HeaderProps = {
   isNumberCitiesLogo: boolean;
@@ -18,8 +18,7 @@ function Header(props: HeaderProps): JSX.Element
 
   function handleLinkClick(e: React.MouseEvent<HTMLAnchorElement>): void {
     e.preventDefault();
-    dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
-    dispatch(setAuhtoriseUser(undefined));
+    dispatch(logoutAction());
   }
 
   return(
