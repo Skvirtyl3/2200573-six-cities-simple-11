@@ -13,8 +13,5 @@ export interface IInitialState {
   offers: OfferType[];
   orderOffer: OrderOffersEnum;
   isDataLoading: boolean;
-}
-
-export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
-};
+}
