@@ -1,12 +1,13 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker} from 'leaflet';
 import useMap from '../../hooks/useMap';
-import {City, Point, StyleMap} from '../../types/map';
+import {Point, StyleMap} from '../../types/map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import 'leaflet/dist/leaflet.css';
+import { City } from '../../types/city';
 
 type MapProps = {
-  city: City;
+  city: City | undefined;
   points: Point[];
   selectedPointKey?: string | undefined | null; //точка выбранного предложения /offer/id
   hoveredPointKey?: string | undefined | null; //точка предложения из активнаой карточки из списка

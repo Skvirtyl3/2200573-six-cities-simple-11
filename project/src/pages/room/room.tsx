@@ -5,22 +5,24 @@ import Gallery from '../../components/gallery/gallery';
 import Logo from '../../components/logo/logo';
 import OffersOther from '../../components/offers-other/offers-other';
 import Reviews from '../../components/reviews/reviews';
-import { OfferParameter } from '../../types/offer';
-import { city, points } from '../../mocks/map';
+import { points } from '../../mocks/map';
 import Map from '../../components/map/map';
 import { ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
+import { selectFilterCity, selectFilterOffers } from '../../store/selector';
+import { useSelector } from 'react-redux';
 
-type RoomProps = {
-  offerParameters: OfferParameter[];
-}
 
-function Room({offerParameters}:RoomProps) : JSX.Element
+function Room() : JSX.Element
 {
+
+  const city = useSelector(selectFilterCity);
+  const offers = useSelector(selectFilterOffers);
+
   const param = useParams();
-  const currentOffer = offerParameters.find((item) => item.key === param.id);
+  const currentOffer = offers.find((item) => item.key === param.id);
 
   let titleHelmet = 'Шесть городов.';
   if(currentOffer !== undefined)
@@ -131,7 +133,7 @@ function Room({offerParameters}:RoomProps) : JSX.Element
           </section>
         }
         <div className="container">
-          <OffersOther offerParameters={offerParameters} currentOfferKey={(currentOffer && currentOffer.key) || ''} onMouseEnter={handleOfferMouseEnter}/>
+          <OffersOther offerParameters={offers} currentOfferKey={(currentOffer && currentOffer.key) || ''} onMouseEnter={handleOfferMouseEnter}/>
         </div>
       </main>
     </div>

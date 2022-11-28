@@ -43,6 +43,7 @@ export type OfferParameter = {
   host: Host;
   desription: string;
   point: string | undefined | null;
+  city: string;
 }
 
 export type Host = {

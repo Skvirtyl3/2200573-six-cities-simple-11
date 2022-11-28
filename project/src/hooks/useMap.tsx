@@ -1,21 +1,22 @@
 import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import {Map, TileLayer} from 'leaflet';
-import { City, Point} from '../types/map';
+import { Point} from '../types/map';
 import {LAYER_MAP, ATTRIBUTE_LAYER_MAP} from '../const';
+import { City } from '../types/city';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  point: City | Point,
+  point: City | Point | undefined,
   zoom: number
 ): Map | null {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
-  const pointRef = useRef<City | Point>(point);
+  const pointRef = useRef<City | Point | undefined>(point);
   const zoomRef = useRef<number>(zoom);
 
   useEffect(() => {
     let isMapMounted = true;
-    if (mapRef.current === null)
+    if (mapRef.current === null || point === undefined)
     {
       return () =>
       {

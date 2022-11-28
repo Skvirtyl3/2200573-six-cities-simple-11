@@ -30,3 +30,4 @@ export const ATTRIBUTE_LAYER_MAP = '&copy; <a href="https://www.openstreetmap.or
 export const MIN_REQURID_SYMBOL_COUNT = 50;
 export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3; //сколько офферов мы показываем в "предложениях"
+export const DEFAULT_CITY = '034b7982-d9d2-4259-bb4f-7dd965ac72e1';
