@@ -2,8 +2,9 @@ import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {OfferType} from '../types/offer';
-import {getOffers, setDataLoadingStatus} from './action';
-import {APIRoute} from '../const';
+import {getOffers, setAuthorizationStatus, setDataLoadingStatus} from './action';
+import {APIRoute, AuthorizationStatus} from '../const';
+import {AuthData, AuhtoriseUser} from '../types/auhtorise';
 
 
 export const fetchHotelAction = createAsyncThunk<void, undefined, {
@@ -19,3 +20,19 @@ export const fetchHotelAction = createAsyncThunk<void, undefined, {
     dispatch(getOffers(data));
   },
 );
+
+export const loginAction = createAsyncThunk<void, AuthData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'user/login',
+  async ({login: email, password}, {dispatch, extra: api}) => {
+    const {data: auhtoriseUser} = await api.post<AuhtoriseUser>(APIRoute.Login, {email, password});
+    if(auhtoriseUser)
+    {
+      dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
+    }
+  },
+);
+
