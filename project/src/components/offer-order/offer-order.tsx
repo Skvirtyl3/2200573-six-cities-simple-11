@@ -2,33 +2,46 @@ import classNames from 'classnames';
 import { OrderOffers } from '../../const';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { setOrderOffers } from '../../store/action';
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 
 function OfferOrder() : JSX.Element
 {
   const dispatch = useAppDispatch();
 
+  const currentOrderKey = useAppSelector((state) => state.orderOffer);
+  const currenOrder = OrderOffers.find((item) => item.key === currentOrderKey);
+  const [showForm, setShowForm] = useState(false);
+
   function handleOrderClick(e: React.MouseEvent<HTMLLIElement>): void {
+    e.preventDefault();
     const {value} = e.currentTarget;
     dispatch(setOrderOffers(value));
-    setFormData({
-      ...formData,
-      showOrderList: false,
-    });
+    setShowForm(false);
   }
 
   function handleSpanClick(e: React.MouseEvent<HTMLSpanElement>): void {
-    const value = formData.showOrderList;
-    setFormData({
-      ...formData,
-      showOrderList: !value,
-    });
+    e.preventDefault();
+    const value = showForm;
+    setShowForm(!value);
   }
 
 
-  const currentOrderKey = useAppSelector((state) => state.orderOffer);
-  const currenOrder = OrderOffers.find((item) => item.key === currentOrderKey);
-  const [formData, setFormData] = useState({showOrderList:false});
+  useEffect(() => {
+    const handleDocumentClick = (evt: MouseEvent) => {
+      const target = evt.target as Element;
+
+      if (showForm && (!target.closest('.places__sorting-type') && !target.closest('.places__options'))) {
+        evt.preventDefault();
+
+        setShowForm(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, [showForm]);
 
   return(
     <div className="places__sorting">
@@ -40,7 +53,7 @@ function OfferOrder() : JSX.Element
         </svg>
       </span>
       {
-        formData.showOrderList &&
+        showForm &&
         <ul className="places__options places__options--custom places__options--opened">
           {OrderOffers.map((item) =>
           {
