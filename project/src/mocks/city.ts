@@ -4,24 +4,24 @@ export const citys: City[] =
 [{
   name: 'Paris',
   location: {
-    latitude: 48.50,
-    longitude: 2.20,
+    latitude: 48.85,
+    longitude: 2.35,
     zoom: 10
   }
 },
 {
   name: 'Cologne',
   location: {
-    latitude: 50.55,
-    longitude: 6.57,
+    latitude: 50.93,
+    longitude: 6.95,
     zoom: 10
   }
 },
 {
   name: 'Brussels',
   location: {
-    latitude: 50.50,
-    longitude: 4.21,
+    latitude: 50.84,
+    longitude: 4.34,
     zoom: 10
   }
 },
@@ -36,8 +36,8 @@ export const citys: City[] =
 {
   name: 'Hamburg',
   location: {
-    latitude: 53.57,
-    longitude: 10.01,
+    latitude: 53.55,
+    longitude: 10.00,
     zoom: 10
   }
 },

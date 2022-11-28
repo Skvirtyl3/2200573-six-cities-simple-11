@@ -11,7 +11,7 @@ export const fetchHotelAction = createAsyncThunk<void, undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchHotels',
+  'hotel/fetchHotels',
   async (_arg, {dispatch, extra: api}) => {
     dispatch(setDataLoadingStatus(true));
     const {data} = await api.get<OfferType[]>(APIRoute.Hotels);
