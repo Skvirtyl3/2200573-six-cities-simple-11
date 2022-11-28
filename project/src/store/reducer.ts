@@ -1,6 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {setCurrentCity, getOffers, getCitys, setOrderOffers, setDataLoadingStatus} from './action';
-import { citys } from '../mocks/city';
 import {DEFAULT_CITY, DEFAULT_ORDER_OFFERS} from '../const';
 import {IInitialState} from '../types/state';
 
@@ -17,8 +16,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(getCitys, (state) => {
-      state.citys = citys;
+    .addCase(getCitys, (state, action) => {
+      state.citys = action.payload;
     })
     .addCase(getOffers, (state, action) => {
       state.offers = action.payload;
