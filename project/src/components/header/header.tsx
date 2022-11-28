@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setAuhtoriseUser, setAuthorizationStatus } from '../../store/action';
 
 type HeaderProps = {
   isNumberCitiesLogo: boolean;
@@ -10,6 +12,16 @@ type HeaderProps = {
 
 function Header(props: HeaderProps): JSX.Element
 {
+  const dispatch = useAppDispatch();
+  const auhtoriseUser = useAppSelector((state) => state.auhtoriseUser);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  function handleLinkClick(e: React.MouseEvent<HTMLAnchorElement>): void {
+    e.preventDefault();
+    dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
+    dispatch(setAuhtoriseUser(undefined));
+  }
+
   return(
     <Fragment>
       <div style={{display: 'none'}}>
@@ -26,17 +38,25 @@ function Header(props: HeaderProps): JSX.Element
             {props.isHaveHeaderNav &&
             <nav className="header__nav">
               <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <div className="header__nav-profile">
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </div>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="\#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
+                {auhtoriseUser &&
+                  <li className="header__nav-item user">
+                    <div className="header__nav-profile">
+                      <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                      <span className="header__user-name user__name">{auhtoriseUser.email}</span>
+                    </div>
+                  </li>}
+                {authorizationStatus === AuthorizationStatus.Auth ?
+                  <li className="header__nav-item">
+                    <Link className="header__nav-link" onClick={handleLinkClick} to='\'>
+                      <span className="header__signout">Sign out</span>
+                    </Link>
+                  </li> :
+                  <li className="header__nav-item user">
+                    <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Login}>
+                      <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                      <span className="header__login">Sign in</span>
+                    </Link>
+                  </li>}
               </ul>
             </nav>}
           </div>

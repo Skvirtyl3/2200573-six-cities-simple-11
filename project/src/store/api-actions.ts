@@ -2,7 +2,7 @@ import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {OfferType} from '../types/offer';
-import {getOffers, setAuthorizationStatus, setDataLoadingStatus} from './action';
+import {getOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus} from './action';
 import {APIRoute, AuthorizationStatus} from '../const';
 import {AuthData, AuhtoriseUser} from '../types/auhtorise';
 
@@ -32,6 +32,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     if(auhtoriseUser)
     {
       dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
+      dispatch(setAuhtoriseUser(auhtoriseUser));
     }
   },
 );
