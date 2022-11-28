@@ -1,17 +1,18 @@
-import { Rank, Rating } from '../types/offer';
+import { Rating } from '../types/offer';
 import { ReviewType, Star} from '../types/review';
 
 export const reviews: ReviewType[] =
 [{
   key: 'dc4c13c9-77cb-4801-a2f8-ecc9d24ef0be',
   text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
-  rating: Rating.Four,
+  rating: 4.4,
   date: new Date(2019,3,24),
   host:
   {
-    name : 'Max',
-    rank: Rank.Pro,
-    avatar: 'img/avatar-max.jpg'
+    id: 1,
+    name: 'Max',
+    isPro: true,
+    avatarUrl: 'img/avatar-max.jpg'
   },
 }];
 

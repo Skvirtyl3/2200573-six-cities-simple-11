@@ -1,6 +1,5 @@
 export type Location = {
-  key: string;
-  title: string;
-  url: string;
-  isActive: boolean;
+  latitude: number;
+  longitude: number;
+  zoom: number;
 }

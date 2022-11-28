@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import App from './components/app/app';
-import { roomParameters } from './mocks/offers';
+import { store } from './store';
+import { getCitys } from './store/action';
+import { fetchHotelAction } from './store/api-actions';
+import { citys } from './mocks/city';
+
+
+store.dispatch(getCitys(citys));
+store.dispatch(fetchHotelAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -9,6 +17,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offers={roomParameters}/>
+    <Provider store = {store}>
+      <App/>
+    </Provider>
   </React.StrictMode>,
 );
