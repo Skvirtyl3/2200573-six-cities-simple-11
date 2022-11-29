@@ -2,7 +2,8 @@ import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {OfferInfo} from '../types/offer';
-import {setOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus, setCurrentOffer, setOffersNearby} from './action';
+import {Comment} from '../types/review';
+import {setOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus, setCurrentOffer, setOffersNearby, setComments} from './action';
 import {APIRoute, AuthorizationStatus} from '../const';
 import {AuthData, AuhtoriseUser} from '../types/auhtorise';
 import { dropToken, setToken } from '../services/token';
@@ -47,6 +48,20 @@ export const fetchHotelsNearbyAction = createAsyncThunk<void, number, {
     const {data} = await api.get<OfferInfo[]>(APIRoute.HotelsNearby.replace(':id',id.toString()));
     dispatch(setDataLoadingStatus(false));
     dispatch(setOffersNearby(data));
+  },
+);
+
+export const fetchCommentsAction = createAsyncThunk<void, number, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comment/fetchComments',
+  async (id, {dispatch, extra: api}) => {
+    dispatch(setDataLoadingStatus(true));
+    const {data} = await api.get<Comment[]>(APIRoute.Comments.replace(':id',id.toString()));
+    dispatch(setDataLoadingStatus(false));
+    dispatch(setComments(data));
   },
 );
 

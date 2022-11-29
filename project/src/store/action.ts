@@ -1,6 +1,7 @@
 import {createAction} from '@reduxjs/toolkit';
 import { AuthorizationStatus, OrderOffersEnum } from '../const';
 import { OfferInfo } from '../types/offer';
+import {Comment} from '../types/review';
 import { City} from '../types/city';
 import { AuhtoriseUser } from '../types/auhtorise';
 
@@ -21,6 +22,10 @@ export const setCurrentOffer = createAction('offer/setCurrentOffer', (value: Off
     payload: value
   }));
 export const setOffersNearby = createAction('offer/setOffersNearby', (value: OfferInfo[]) =>
+  ({
+    payload: value
+  }));
+export const setComments = createAction('offer/setComments', (value: Comment[]) =>
   ({
     payload: value
   }));

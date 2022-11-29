@@ -2,6 +2,7 @@ import { AuthorizationStatus, OrderOffersEnum } from '../const.js';
 import {store} from '../store/index.js';
 import { City } from '../types/city';
 import { OfferInfo } from '../types/offer';
+import { Comment } from '../types/review';
 import { AuhtoriseUser } from './auhtorise.js';
 
 export type State = ReturnType<typeof store.getState>;
@@ -15,6 +16,7 @@ export interface IInitialState {
   offersNearby: OfferInfo[];
   currentOffer: OfferInfo | undefined;
   orderOffer: OrderOffersEnum;
+  comments: Comment[];
   isDataLoading: boolean;
   authorizationStatus: AuthorizationStatus;
   auhtoriseUser: AuhtoriseUser | undefined;
