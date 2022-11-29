@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { OfferType } from '../../types/offer';
+import { OfferInfo } from '../../types/offer';
 import { AppRoute } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 import { Location } from '../../types/location';
 
 type OfferProps = {
-  offerParameter: OfferType;
+  offerParameter: OfferInfo;
   onMouseEnter?: (location?:Location) => void;
 }
 

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
 import { store } from './store';
-import { getCitys } from './store/action';
-import { checkAuthAction, fetchHotelAction } from './store/api-actions';
+import { setCitys } from './store/action';
+import { checkAuthAction, fetchHotelsAction } from './store/api-actions';
 import { citys } from './mocks/city';
 
 
-store.dispatch(getCitys(citys));
-store.dispatch(fetchHotelAction());
+store.dispatch(setCitys(citys));
+store.dispatch(fetchHotelsAction());
 store.dispatch(checkAuthAction());
 
 const root = ReactDOM.createRoot(

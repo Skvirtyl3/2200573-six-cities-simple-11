@@ -1,6 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 import { AuthorizationStatus, OrderOffersEnum } from '../const';
-import { OfferType } from '../types/offer';
+import { OfferInfo } from '../types/offer';
 import { City} from '../types/city';
 import { AuhtoriseUser } from '../types/auhtorise';
 
@@ -8,11 +8,15 @@ export const setCurrentCity = createAction('city/setCurrentCity', (value: string
   ({
     payload: value
   }));
-export const getCitys = createAction('city/getCitys', (value: City[]) =>
+export const setCitys = createAction('city/setCitys', (value: City[]) =>
   ({
     payload: value
   }));
-export const getOffers = createAction('offer/getOffers', (value: OfferType[]) =>
+export const setOffers = createAction('offer/setOffers', (value: OfferInfo[]) =>
+  ({
+    payload: value
+  }));
+export const setCurrentOffer = createAction('offer/setOffer', (value: OfferInfo) =>
   ({
     payload: value
   }));

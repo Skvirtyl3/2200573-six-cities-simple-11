@@ -1,11 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {setCurrentCity, getOffers, getCitys, setOrderOffers, setDataLoadingStatus, setAuthorizationStatus, setAuhtoriseUser} from './action';
+import {setCurrentCity, setOffers, setCitys, setOrderOffers, setDataLoadingStatus, setAuthorizationStatus, setAuhtoriseUser, setCurrentOffer} from './action';
 import {AuthorizationStatus, DEFAULT_CITY, DEFAULT_ORDER_OFFERS} from '../const';
 import {IInitialState} from '../types/state';
 
 export const initialState: IInitialState = {
   city: DEFAULT_CITY,
   citys: [],
+  currentOffer: undefined,
   offers: [],
   orderOffer: DEFAULT_ORDER_OFFERS,
   isDataLoading: false,
@@ -18,11 +19,14 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(getCitys, (state, action) => {
+    .addCase(setCitys, (state, action) => {
       state.citys = action.payload;
     })
-    .addCase(getOffers, (state, action) => {
+    .addCase(setOffers, (state, action) => {
       state.offers = action.payload;
+    })
+    .addCase(setCurrentOffer, (state, action) => {
+      state.currentOffer = action.payload;
     })
     .addCase(setOrderOffers, (state, action) => {
       state.orderOffer = action.payload;

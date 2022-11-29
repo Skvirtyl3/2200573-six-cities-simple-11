@@ -1,11 +1,11 @@
 import { NEAR_PLACES_COUNT } from '../../const';
-import { OfferType } from '../../types/offer';
+import { OfferInfo } from '../../types/offer';
 import Offer from '../offer/offer';
 import { Location } from '../../types/location';
 
 
 type OffersOtherProps = {
-  offerParameters: OfferType[];
+  offerParameters: OfferInfo[];
   currentOfferId: number | undefined; //ид текущего отображаемого оффера, исключаем его из перечня, чтобы в блоке "Other places in the neighbourhood" он не отобразился
   onMouseEnter: (location?:Location) => void;
 }

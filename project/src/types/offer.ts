@@ -16,7 +16,7 @@ export enum TypeOffer {
 }
 
 
-export type OfferType =
+export type OfferInfo =
 {
   bedrooms: number;
   city: City;

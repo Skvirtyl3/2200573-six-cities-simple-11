@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import {IInitialState} from '../types/state';
-import { OfferType } from '../types/offer';
+import { OfferInfo } from '../types/offer';
 import { OrderOffersEnum } from '../const';
 
 const selectCity = (state: IInitialState) => state.city;
@@ -21,7 +21,7 @@ export const selectFilterOffers = createSelector(
   selectOrderOffer,
   (city, offers, order) => offers.filter((item) => item.city.name === city)
     .sort(
-      (a: OfferType,b: OfferType) =>
+      (a: OfferInfo,b: OfferInfo) =>
       {
         switch(order) {
           case OrderOffersEnum.Popular:
