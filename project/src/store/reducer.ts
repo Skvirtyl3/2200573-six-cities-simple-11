@@ -1,6 +1,4 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {setCurrentCity, getOffers, getCitys, setOrderOffers} from './action';
-import {DEFAULT_CITY, DEFAULT_ORDER_OFFERS} from '../const';
 import {IInitialState} from '../types/state';
 
 export const initialState: IInitialState = {
@@ -20,9 +18,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(getOffers, (state, action) => {
       state.offers = action.payload;
-    })
-    .addCase(setOrderOffers, (state, action) => {
-      state.orderOffer = action.payload;
     });
 });
 
