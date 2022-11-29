@@ -1,34 +1,50 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Gallery from '../../components/gallery/gallery';
 import Header from '../../components/header/header';
 import OffersNearby from '../../components/offers-nearby/offers-nearby';
 import Reviews from '../../components/reviews/reviews';
-import { points } from '../../mocks/map';
 import Map from '../../components/map/map';
 import { ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
-import { selectFilterCity, selectFilterOffers } from '../../store/selector';
-import { useSelector } from 'react-redux';
 import { Location } from '../../types/location';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
+import { setDataLoadingStatus } from '../../store/action';
 
 
 function Room() : JSX.Element
 {
+  const currentOffer = useAppSelector((state) => state.currentOffer);
+  const nearbyOffers = useAppSelector((state) => state.offersNearby);
+  const {id} = useParams();
+  const offerId = Number(id);
+  const dispatch = useAppDispatch();
 
-  const city = useSelector(selectFilterCity);
-  const offers = useSelector(selectFilterOffers);
+  const points = nearbyOffers.flatMap((item) => item.location);
+  if(currentOffer)
+  {
+    points.push(currentOffer.location);
+  }
 
-  const param = useParams();
-  const currentOffer = offers.find((item) => item.id.toString() === param.id);
+  useEffect(() => {
+    if(offerId)
+    {
+      dispatch(setDataLoadingStatus(true));
+      dispatch(fetchHotelAction(offerId));
+      dispatch(fetchHotelsNearbyAction(offerId));
+      dispatch(fetchCommentsAction(offerId));
+      dispatch(setDataLoadingStatus(false));
+    }
+  }, [dispatch, offerId]);
 
   let titleHelmet = 'Шесть городов.';
   if(currentOffer !== undefined)
   {
-    titleHelmet = (typeof(param.id) === 'string' ? titleHelmet.concat(' ',currentOffer.title ,'.') : titleHelmet );
+    titleHelmet = (typeof(id) === 'string' ? titleHelmet.concat(' ',currentOffer.title ,'.') : titleHelmet );
   }
   const ratingWidth: string = currentOffer ? GetRatingStileByNumber(currentOffer.rating) : '0%';
 
@@ -127,12 +143,12 @@ function Room() : JSX.Element
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>
-              <Map city={city} points={points} selectedPoint={currentOffer.location} hoveredPoint={hover} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
+              <Map city={currentOffer.city} points={points} selectedPoint={currentOffer.location} hoveredPoint={hover} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
             </section>
           </section>
         }
         <div className="container">
-          <OffersNearby offerParameters={offers} currentOfferId={currentOffer && currentOffer.id} onMouseEnter={handleOfferMouseEnter}/>
+          <OffersNearby offerParameters={nearbyOffers} currentOfferId={offerId} onMouseEnter={handleOfferMouseEnter}/>
         </div>
       </main>
     </div>

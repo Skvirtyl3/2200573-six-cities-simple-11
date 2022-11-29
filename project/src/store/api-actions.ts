@@ -30,9 +30,7 @@ export const fetchHotelAction = createAsyncThunk<void, number, {
 }>(
   'hotel/fetchHotel',
   async (id, {dispatch, extra: api}) => {
-    dispatch(setDataLoadingStatus(true));
     const {data} = await api.get<OfferInfo>(APIRoute.HotelById.replace(':id',id.toString()));
-    dispatch(setDataLoadingStatus(false));
     dispatch(setCurrentOffer(data));
   },
 );
@@ -44,9 +42,7 @@ export const fetchHotelsNearbyAction = createAsyncThunk<void, number, {
 }>(
   'hotel/fetchHotelsNearby',
   async (id, {dispatch, extra: api}) => {
-    dispatch(setDataLoadingStatus(true));
     const {data} = await api.get<OfferInfo[]>(APIRoute.HotelsNearby.replace(':id',id.toString()));
-    dispatch(setDataLoadingStatus(false));
     dispatch(setOffersNearby(data));
   },
 );
@@ -58,9 +54,7 @@ export const fetchCommentsAction = createAsyncThunk<void, number, {
 }>(
   'comment/fetchComments',
   async (id, {dispatch, extra: api}) => {
-    dispatch(setDataLoadingStatus(true));
     const {data} = await api.get<Comment[]>(APIRoute.Comments.replace(':id',id.toString()));
-    dispatch(setDataLoadingStatus(false));
     dispatch(setComments(data));
   },
 );
