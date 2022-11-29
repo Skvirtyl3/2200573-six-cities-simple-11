@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Gallery from '../../components/gallery/gallery';
 import Header from '../../components/header/header';
-import OffersOther from '../../components/offers-other/offers-other';
+import OffersNearby from '../../components/offers-nearby/offers-nearby';
 import Reviews from '../../components/reviews/reviews';
 import { points } from '../../mocks/map';
 import Map from '../../components/map/map';
@@ -132,7 +132,7 @@ function Room() : JSX.Element
           </section>
         }
         <div className="container">
-          <OffersOther offerParameters={offers} currentOfferId={currentOffer && currentOffer.id} onMouseEnter={handleOfferMouseEnter}/>
+          <OffersNearby offerParameters={offers} currentOfferId={currentOffer && currentOffer.id} onMouseEnter={handleOfferMouseEnter}/>
         </div>
       </main>
     </div>

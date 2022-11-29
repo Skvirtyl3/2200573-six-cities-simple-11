@@ -12,6 +12,7 @@ export interface IInitialState {
   city: string;
   citys: City[];
   offers: OfferInfo[];
+  offersNearby: OfferInfo[];
   currentOffer: OfferInfo | undefined;
   orderOffer: OrderOffersEnum;
   isDataLoading: boolean;

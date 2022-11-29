@@ -16,7 +16,11 @@ export const setOffers = createAction('offer/setOffers', (value: OfferInfo[]) =>
   ({
     payload: value
   }));
-export const setCurrentOffer = createAction('offer/setOffer', (value: OfferInfo) =>
+export const setCurrentOffer = createAction('offer/setCurrentOffer', (value: OfferInfo) =>
+  ({
+    payload: value
+  }));
+export const setOffersNearby = createAction('offer/setOffersNearby', (value: OfferInfo[]) =>
   ({
     payload: value
   }));

@@ -69,7 +69,7 @@ export const REQUEST_TIMEOUT = 5000;
 export enum APIRoute {
   Hotels = '/hotels',
   HotelById = '/hotels/:id',
-  HotelNearby = '/hotels/:id/nearby',
+  HotelsNearby = '/hotels/:id/nearby',
   Comments = '/comments/:id',
   Login = '/login',
   Logout = '/logout',

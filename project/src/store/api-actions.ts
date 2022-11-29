@@ -2,7 +2,7 @@ import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {OfferInfo} from '../types/offer';
-import {setOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus, setCurrentOffer} from './action';
+import {setOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus, setCurrentOffer, setOffersNearby} from './action';
 import {APIRoute, AuthorizationStatus} from '../const';
 import {AuthData, AuhtoriseUser} from '../types/auhtorise';
 import { dropToken, setToken } from '../services/token';
@@ -33,6 +33,20 @@ export const fetchHotelAction = createAsyncThunk<void, number, {
     const {data} = await api.get<OfferInfo>(APIRoute.HotelById.replace(':id',id.toString()));
     dispatch(setDataLoadingStatus(false));
     dispatch(setCurrentOffer(data));
+  },
+);
+
+export const fetchHotelsNearbyAction = createAsyncThunk<void, number, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'hotel/fetchHotelsNearby',
+  async (id, {dispatch, extra: api}) => {
+    dispatch(setDataLoadingStatus(true));
+    const {data} = await api.get<OfferInfo[]>(APIRoute.HotelsNearby.replace(':id',id.toString()));
+    dispatch(setDataLoadingStatus(false));
+    dispatch(setOffersNearby(data));
   },
 );
 
