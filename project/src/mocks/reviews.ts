@@ -5,7 +5,7 @@ export const reviews: ReviewType[] =
 [{
   key: 'dc4c13c9-77cb-4801-a2f8-ecc9d24ef0be',
   text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
-  rating: Rating.Four,
+  rating: 4.4,
   date: new Date(2019,3,24),
   host:
   {

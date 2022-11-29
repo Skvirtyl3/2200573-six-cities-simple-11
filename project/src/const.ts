@@ -31,3 +31,34 @@ export const MIN_REQURID_SYMBOL_COUNT = 50;
 export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3; //сколько офферов мы показываем в "предложениях"
 export const DEFAULT_CITY = '034b7982-d9d2-4259-bb4f-7dd965ac72e1';
+
+export enum OrderOffersEnum
+{
+  Popular = 1,
+  LowToHighPrice = 2,
+  HighToLowPrice = 3,
+  TopRatedFirst = 4
+}
+
+export const OrderOffers =
+[
+  {
+    key: OrderOffersEnum.Popular,
+    title: 'Популярные'
+  },
+  {
+    key: OrderOffersEnum.LowToHighPrice,
+    title: 'От дешёвых к дорогим'
+  },
+  {
+    key: OrderOffersEnum.HighToLowPrice,
+    title: 'От дорогих к дешёвым'
+  },
+  {
+    key: OrderOffersEnum.TopRatedFirst,
+    title: 'От высокого рейтинга к низкому'
+  },
+];
+
+export const DEFAULT_ORDER_OFFERS = OrderOffersEnum.Popular;
+

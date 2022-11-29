@@ -1,4 +1,4 @@
-import { Rating, OfferParameter, TypeOffer, ListWhatsInside, Rank } from '../types/offer';
+import { OfferParameter, TypeOffer, ListWhatsInside, Rank } from '../types/offer';
 
 export const roomParameters: OfferParameter[] =
 [{
@@ -7,7 +7,7 @@ export const roomParameters: OfferParameter[] =
   imgSrc: 'img/apartment-01.jpg',
   price: 120,
   isNight: true,
-  rating: Rating.Four,
+  rating: 4,
   name: 'Beautiful &amp; luxurious apartment at great location',
   type: TypeOffer.Apartment,
   countBedrooms: 3,
@@ -29,7 +29,7 @@ export const roomParameters: OfferParameter[] =
   imgSrc: 'img/room.jpg',
   price: 80,
   isNight: true,
-  rating: Rating.Four,
+  rating: 4.2,
   name: 'Wood and stone place',
   type: TypeOffer.PrivateRoom,
   countBedrooms: 3,
@@ -51,7 +51,7 @@ export const roomParameters: OfferParameter[] =
   imgSrc: 'img/apartment-02.jpg',
   price: 132,
   isNight: true,
-  rating: Rating.Four,
+  rating: 4.5,
   name: 'Canal View Prinsengracht',
   type: TypeOffer.Apartment,
   countBedrooms: 3,
@@ -73,7 +73,7 @@ export const roomParameters: OfferParameter[] =
   imgSrc: 'img/apartment-03.jpg',
   price: 180,
   isNight: true,
-  rating: Rating.Five,
+  rating: 5,
   name: 'Nice, cozy, warm big bed apartment',
   type: TypeOffer.Apartment,
   countBedrooms: 3,
@@ -95,7 +95,7 @@ export const roomParameters: OfferParameter[] =
   imgSrc: 'img/room.jpg',
   price: 80,
   isNight: true,
-  rating: Rating.Four,
+  rating: 4.8,
   name: 'Wood and stone place',
   type: TypeOffer.PrivateRoom,
   countBedrooms: 3,
@@ -117,7 +117,7 @@ export const roomParameters: OfferParameter[] =
   imgSrc: 'img/room.jpg',
   price: 80,
   isNight: true,
-  rating: Rating.Four,
+  rating: 4.0,
   name: 'Парижский Wood and stone place',
   type: TypeOffer.PrivateRoom,
   countBedrooms: 3,

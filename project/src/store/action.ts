@@ -14,3 +14,4 @@ export const getOffers = createAction('offer/getOffers', (value: OfferParameter[
   ({
     payload: value
   }));
+

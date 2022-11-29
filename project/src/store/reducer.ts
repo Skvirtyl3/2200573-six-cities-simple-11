@@ -1,12 +1,11 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {setCurrentCity, getOffers, getCitys} from './action';
-import {DEFAULT_CITY} from '../const';
 import {IInitialState} from '../types/state';
 
 export const initialState: IInitialState = {
   city: DEFAULT_CITY,
   citys: [],
-  offers: []
+  offers: [],
+  orderOffer: DEFAULT_ORDER_OFFERS
 };
 
 const reducer = createReducer(initialState, (builder) => {

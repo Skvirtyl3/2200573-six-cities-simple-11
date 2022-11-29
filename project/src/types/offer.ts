@@ -34,7 +34,7 @@ export type OfferParameter = {
   imgSrc: string;
   price: number;
   isNight: boolean;
-  rating: Rating;
+  rating: number;
   name: string;
   type: TypeOffer;
   countBedrooms: number;
