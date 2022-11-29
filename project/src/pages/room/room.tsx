@@ -13,7 +13,7 @@ import { StyleMap } from '../../types/map';
 import { Location } from '../../types/location';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
-import { setDataLoadingStatus } from '../../store/action';
+import { setComments, setCurrentOffer, setDataLoadingStatus, setOffersNearby } from '../../store/action';
 
 
 function Room() : JSX.Element
@@ -39,6 +39,13 @@ function Room() : JSX.Element
       dispatch(fetchCommentsAction(offerId));
       dispatch(setDataLoadingStatus(false));
     }
+
+    return () =>
+    {
+      dispatch(setCurrentOffer(undefined));
+      dispatch(setOffersNearby([]));
+      dispatch(setComments([]));
+    };
   }, [dispatch, offerId]);
 
   let titleHelmet = 'Шесть городов.';
