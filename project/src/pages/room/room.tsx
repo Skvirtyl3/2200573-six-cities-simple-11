@@ -21,6 +21,7 @@ function Room() : JSX.Element
 {
   const currentOffer = useAppSelector((state) => state.currentOffer);
   const nearbyOffers = useAppSelector((state) => state.offersNearby);
+  const comments = useAppSelector((state) => state.comments);
   const isDataLoading = useAppSelector((state) => state.isDataLoading);
   const [hover, setHover] = useState(null as Location | undefined | null);
   const {id} = useParams();
@@ -156,7 +157,7 @@ function Room() : JSX.Element
                     </p>
                   </div>
                 </div>
-                <Reviews />
+                <Reviews comments={comments}/>
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>

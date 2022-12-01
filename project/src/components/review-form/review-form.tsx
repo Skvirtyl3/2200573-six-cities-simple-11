@@ -1,4 +1,4 @@
-import { stars } from '../../mocks/reviews';
+import { stars } from '../../const';
 import ReviewStar from '../review-star/review-star';
 import {useState} from 'react';
 import { MIN_REQURID_SYMBOL_COUNT } from '../../const';
