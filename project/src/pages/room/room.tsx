@@ -157,7 +157,7 @@ function Room() : JSX.Element
                     </p>
                   </div>
                 </div>
-                <Reviews comments={comments}/>
+                <Reviews comments={comments} offerId={offerId}/>
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>

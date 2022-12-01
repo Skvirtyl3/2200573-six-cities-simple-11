@@ -13,3 +13,9 @@ export type Comment = {
   rating: number;
   user: Host;
 }
+
+export type SendComment = {
+  offerId: number;
+  comment: string;
+  rating: number;
+}
