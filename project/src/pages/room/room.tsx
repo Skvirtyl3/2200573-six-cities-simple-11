@@ -14,21 +14,18 @@ import { Location } from '../../types/location';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
 import { setComments, setCurrentOffer, setDataLoadingStatus, setOffersNearby } from '../../store/action';
+import PageNotFound from '../page-not-found/page-not-found';
 
 
 function Room() : JSX.Element
 {
   const currentOffer = useAppSelector((state) => state.currentOffer);
   const nearbyOffers = useAppSelector((state) => state.offersNearby);
+  const isDataLoading = useAppSelector((state) => state.isDataLoading);
+  const [hover, setHover] = useState(null as Location | undefined | null);
   const {id} = useParams();
   const offerId = Number(id);
   const dispatch = useAppDispatch();
-
-  const points = nearbyOffers.flatMap((item) => item.location);
-  if(currentOffer)
-  {
-    points.push(currentOffer.location);
-  }
 
   useEffect(() => {
     if(offerId)
@@ -48,6 +45,20 @@ function Room() : JSX.Element
     };
   }, [dispatch, offerId]);
 
+  const points = nearbyOffers.flatMap((item) => item.location);
+  if(currentOffer)
+  {
+    points.push(currentOffer.location);
+  }
+  else
+  {
+    if(!isDataLoading)
+    {
+      return <PageNotFound/>;
+    }
+  }
+
+
   let titleHelmet = 'Шесть городов.';
   if(currentOffer !== undefined)
   {
@@ -59,7 +70,6 @@ function Room() : JSX.Element
     setHover(point);
   }
 
-  const [hover, setHover] = useState(null as Location | undefined | null);
   return(
     <div className="page">
       <Helmet><title>{titleHelmet}</title></Helmet>
