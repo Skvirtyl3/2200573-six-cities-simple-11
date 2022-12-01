@@ -1,6 +1,6 @@
 function Loading(): JSX.Element {
   return (
-    <p>Please wait...</p>
+    <img src="img/loading.gif" alt="loading..." width="100px" style={{marginLeft:'auto', marginRight:'auto'}}/>
   );
 }
 
