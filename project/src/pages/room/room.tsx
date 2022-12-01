@@ -78,7 +78,7 @@ function Room() : JSX.Element
         {
           currentOffer &&
           <section className="property">
-            <Gallery />
+            <Gallery images={currentOffer.images}/>
             <div className="property__container container">
               <div className="property__wrapper">
                 {

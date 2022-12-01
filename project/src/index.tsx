@@ -5,7 +5,7 @@ import App from './components/app/app';
 import { store } from './store';
 import { setCitys } from './store/action';
 import { checkAuthAction, fetchHotelsAction } from './store/api-actions';
-import { citys } from './mocks/city';
+import { citys } from './const';
 
 
 store.dispatch(setCitys(citys));

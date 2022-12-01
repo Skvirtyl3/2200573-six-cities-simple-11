@@ -11,10 +11,11 @@ export enum Rating {
 }
 
 export enum TypeOffer {
-  PrivateRoom = 'Private room',
-  Apartment = 'Apartment'
+  Room = 'Private room',
+  Apartment = 'Apartment',
+  House = 'House',
+  Hotel = 'Hotel'
 }
-
 
 export type OfferInfo =
 {
@@ -32,7 +33,7 @@ export type OfferInfo =
   price: number;
   rating: number;
   title: string;
-  type: string;
+  type: TypeOffer;
 }
 
 
