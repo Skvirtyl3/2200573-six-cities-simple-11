@@ -30,4 +30,5 @@ export type OfferRoomData = {
   currentOffer: OfferInfo | undefined;
   comments: Comment[];
   isDataLoading: boolean;
+  isMessageSending: boolean;
 };

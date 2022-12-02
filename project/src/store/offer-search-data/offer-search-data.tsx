@@ -20,6 +20,9 @@ export const offerSearchData = createSlice({
       .addCase(fetchHotelsAction.fulfilled, (state, action) => {
         state.offers = action.payload;
         state.isDataLoading = false;
+      })
+      .addCase(fetchHotelsAction.rejected, (state) => {
+        state.isDataLoading = false;
       });
   }
 });

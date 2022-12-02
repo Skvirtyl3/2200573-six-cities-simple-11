@@ -59,6 +59,7 @@ function Map(props: MapProps): JSX.Element {
   const map = useMap(mapRef, hoveredPoint || selectedPoint || city?.location, zoom);
 
   useEffect(() => {
+    let isMapMounted = true;
     if (map) {
       map.eachLayer((layer) => {
         if (layer instanceof Marker) {
@@ -72,11 +73,18 @@ function Map(props: MapProps): JSX.Element {
           lng: point.longitude
         });
 
-        marker
-          .setIcon(GetPointIcon(point, selectedPoint, hoveredPoint))
-          .addTo(map);
+        if(isMapMounted)
+        {
+          marker
+            .setIcon(GetPointIcon(point, selectedPoint, hoveredPoint))
+            .addTo(map);
+        }
       });
     }
+    return () =>
+    {
+      isMapMounted = false;
+    };
   }, [map, points, selectedPoint, hoveredPoint]);
 
   return <div style={ styleMap === StyleMap.Main ? styleMapMain : styleMapRoom} ref={mapRef}></div>;

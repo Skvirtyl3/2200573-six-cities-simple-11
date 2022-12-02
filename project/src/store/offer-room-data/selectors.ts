@@ -7,3 +7,5 @@ export const getCurrentOffer = (state: State): OfferInfo | undefined => state[Na
 export const getOffersNearby = (state: State): OfferInfo[] => state[NameSpace.OfferRoomData].offersNearby;
 export const getComments = (state: State): Comment[] => state[NameSpace.OfferRoomData].comments;
 export const getRoomDataLoadingStatus = (state: State): boolean => state[NameSpace.OfferRoomData].isDataLoading;
+export const getMessageSending = (state: State): boolean => state[NameSpace.OfferRoomData].isMessageSending;
+
