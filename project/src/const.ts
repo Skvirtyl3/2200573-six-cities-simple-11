@@ -31,6 +31,7 @@ export const ATTRIBUTE_LAYER_MAP = '&copy; <a href="https://www.openstreetmap.or
 //#endregion Настройки карты
 
 export const MIN_REQURID_SYMBOL_COUNT = 50;
+export const MAX_REQURID_SYMBOL_COUNT = 300;
 export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3;
 export const DEFAULT_CITY = 'Paris';

@@ -6,7 +6,7 @@ import Header from '../../components/header/header';
 import OffersNearby from '../../components/offers-nearby/offers-nearby';
 import Reviews from '../../components/reviews/reviews';
 import Map from '../../components/map/map';
-import { ZOOM_MAP_ROOM } from '../../const';
+import { REVIEW_ITEMS_COUNT, ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber, Pluralize } from '../../helpers/helpers';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
@@ -17,6 +17,7 @@ import { cleareData } from '../../store/offer-room-data/offer-room-data';
 import PageNotFound from '../page-not-found/page-not-found';
 import { getComments, getCurrentOffer, getOffersNearby, getRoomDataLoadingStatus } from '../../store/offer-room-data/selectors';
 import Loading from '../loading/loading';
+import {Comment} from '../../types/review';
 
 
 function Room() : JSX.Element
@@ -44,6 +45,12 @@ function Room() : JSX.Element
     };
   }, [dispatch, offerId]);
 
+  if (isDataLoading) {
+    return (
+      <Loading />
+    );
+  }
+
   const points = offersNearby.flatMap((item) => item.location);
   if(currentOffer)
   {
@@ -51,18 +58,10 @@ function Room() : JSX.Element
   }
   else
   {
-    if(!isDataLoading)
-    {
-      return <PageNotFound/>;
-    }
+    return <PageNotFound/>;
   }
 
-  if (isDataLoading) {
-    return (
-      <Loading />
-    );
-  }
-
+  const commentsList = comments.slice().sort((a: Comment, b: Comment) => new Date(a.date) < new Date(b.date) ? 1 : -1).slice(0, REVIEW_ITEMS_COUNT);
 
   let titleHelmet = 'Шесть городов.';
   if(currentOffer !== undefined)
@@ -161,7 +160,7 @@ function Room() : JSX.Element
                     </p>
                   </div>
                 </div>
-                <Reviews comments={comments} offerId={offerId}/>
+                <Reviews comments={commentsList} offerId={offerId}/>
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>
