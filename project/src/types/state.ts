@@ -10,12 +10,8 @@ export type State = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export interface IInitialState {
-  city: string;
-  citys: City[];
-  offers: OfferInfo[];
   offersNearby: OfferInfo[];
   currentOffer: OfferInfo | undefined;
-  orderOffer: OrderOffersEnum;
   comments: Comment[];
   isDataLoading: boolean;
   auhtoriseUser: AuhtoriseUser | undefined;
@@ -24,3 +20,14 @@ export interface IInitialState {
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
 };
+
+export type OfferSearchData = {
+  offers: OfferInfo[];
+  isDataLoading: boolean;
+};
+
+export type OfferSearchProcess = {
+  city: string;
+  citys: City[];
+  orderOffer: OrderOffersEnum;
+}
