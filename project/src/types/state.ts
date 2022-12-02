@@ -9,16 +9,9 @@ export type State = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
-export interface IInitialState {
-  offersNearby: OfferInfo[];
-  currentOffer: OfferInfo | undefined;
-  comments: Comment[];
-  isDataLoading: boolean;
-  auhtoriseUser: AuhtoriseUser | undefined;
-}
-
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
+  auhtoriseUser: AuhtoriseUser | undefined;
 };
 
 export type OfferSearchData = {
@@ -31,3 +24,10 @@ export type OfferSearchProcess = {
   citys: City[];
   orderOffer: OrderOffersEnum;
 }
+
+export type OfferRoomData = {
+  offersNearby: OfferInfo[];
+  currentOffer: OfferInfo | undefined;
+  comments: Comment[];
+  isDataLoading: boolean;
+};
