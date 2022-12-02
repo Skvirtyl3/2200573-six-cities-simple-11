@@ -1,3 +1,4 @@
+import React from 'react';
 import {citys} from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { setCurrentCity } from '../../store/action';
@@ -24,4 +25,4 @@ function NavLocations(): JSX.Element
   );
 }
 
-export default NavLocations;
+export default React.memo(NavLocations);
