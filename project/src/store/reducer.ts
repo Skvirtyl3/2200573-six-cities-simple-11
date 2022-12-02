@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {setCurrentCity, setOffers, setCitys, setOrderOffers, setDataLoadingStatus, setAuthorizationStatus, setAuhtoriseUser, setCurrentOffer, setOffersNearby, setComments} from './action';
-import {AuthorizationStatus, DEFAULT_CITY, DEFAULT_ORDER_OFFERS} from '../const';
+import {setCurrentCity, setOffers, setCitys, setOrderOffers, setDataLoadingStatus, setAuhtoriseUser, setCurrentOffer, setOffersNearby, setComments} from './action';
+import {DEFAULT_CITY, DEFAULT_ORDER_OFFERS} from '../const';
 import {IInitialState} from '../types/state';
 
 export const initialState: IInitialState = {
@@ -12,7 +12,6 @@ export const initialState: IInitialState = {
   orderOffer: DEFAULT_ORDER_OFFERS,
   comments: [],
   isDataLoading: false,
-  authorizationStatus: AuthorizationStatus.Unknown,
   auhtoriseUser: undefined
 };
 
@@ -41,9 +40,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setDataLoadingStatus, (state, action) => {
       state.isDataLoading = action.payload;
-    })
-    .addCase(setAuthorizationStatus, (state, action) => {
-      state.authorizationStatus = action.payload;
     })
     .addCase(setAuhtoriseUser, (state, action) => {
       state.auhtoriseUser = action.payload;

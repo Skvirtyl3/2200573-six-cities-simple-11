@@ -163,3 +163,9 @@ export const stars: Star[] =
     description: 'terribly'
   },
 ];
+
+export enum NameSpace {
+  Offer = 'OFFER',
+  Comment = 'COMMENT',
+  User = 'USER'
+}

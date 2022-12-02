@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import { AuthorizationStatus, OrderOffersEnum } from '../const';
+import { OrderOffersEnum } from '../const';
 import { OfferInfo } from '../types/offer';
 import {Comment} from '../types/review';
 import { City} from '../types/city';
@@ -34,10 +34,6 @@ export const setOrderOffers = createAction('offer/setOrderOffers', (value: Order
     payload: value
   }));
 export const setDataLoadingStatus = createAction('data/setDataLoadingStatus', (value: boolean) =>
-  ({
-    payload: value
-  }));
-export const setAuthorizationStatus = createAction('user/authorization', (value: AuthorizationStatus) =>
   ({
     payload: value
   }));

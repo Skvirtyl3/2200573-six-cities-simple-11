@@ -18,6 +18,9 @@ export interface IInitialState {
   orderOffer: OrderOffersEnum;
   comments: Comment[];
   isDataLoading: boolean;
-  authorizationStatus: AuthorizationStatus;
   auhtoriseUser: AuhtoriseUser | undefined;
 }
+
+export type UserProcess = {
+  authorizationStatus: AuthorizationStatus;
+};

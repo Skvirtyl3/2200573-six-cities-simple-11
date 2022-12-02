@@ -3,8 +3,8 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {OfferInfo} from '../types/offer';
 import {Comment, SendComment} from '../types/review';
-import {setOffers, setAuhtoriseUser, setAuthorizationStatus, setDataLoadingStatus, setCurrentOffer, setOffersNearby, setComments} from './action';
-import {APIRoute, AuthorizationStatus} from '../const';
+import {setOffers, setAuhtoriseUser, setDataLoadingStatus, setCurrentOffer, setOffersNearby, setComments} from './action';
+import {APIRoute} from '../const';
 import {AuthData, AuhtoriseUser} from '../types/auhtorise';
 import { dropToken, setToken } from '../services/token';
 
@@ -83,7 +83,6 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     if(auhtoriseUser)
     {
       setToken(auhtoriseUser.token);
-      dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
       dispatch(setAuhtoriseUser(auhtoriseUser));
     }
   },
@@ -98,7 +97,6 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
     dropToken();
-    dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
     dispatch(setAuhtoriseUser(undefined));
   },
 );
@@ -110,15 +108,10 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
 }>(
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
-    try {
-      const {data: auhtoriseUser} = await api.get<AuhtoriseUser>(APIRoute.Login);
-      if(auhtoriseUser)
-      {
-        dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
-        dispatch(setAuhtoriseUser(auhtoriseUser));
-      }
-    } catch {
-      dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
+    const {data: auhtoriseUser} = await api.get<AuhtoriseUser>(APIRoute.Login);
+    if(auhtoriseUser)
+    {
+      dispatch(setAuhtoriseUser(auhtoriseUser));
     }
   },
 );
