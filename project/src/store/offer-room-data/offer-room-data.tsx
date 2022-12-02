@@ -10,10 +10,16 @@ const initialState: OfferRoomData = {
   isDataLoading: false,
 };
 
-export const offerSearchData = createSlice({
-  name: NameSpace.OfferSearch,
+export const offerRoomData = createSlice({
+  name: NameSpace.OfferSearchData,
   initialState,
-  reducers: {},
+  reducers: {
+    cleareData: (state) => {
+      state.currentOffer = undefined;
+      state.offersNearby = [];
+      state.comments = [];
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchHotelAction.pending, (state) => {
@@ -39,3 +45,5 @@ export const offerSearchData = createSlice({
       });
   }
 });
+
+export const {cleareData} = offerRoomData.actions;

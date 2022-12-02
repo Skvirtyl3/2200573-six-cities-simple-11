@@ -6,19 +6,9 @@ import Login from '../../pages/login/login';
 import PageNotFound from '../../pages/page-not-found/page-not-found';
 import { HelmetProvider } from 'react-helmet-async';
 import Scroll from '../sroll/scroll';
-import { useAppSelector } from '../../hooks';
-import Loading from '../../pages/loading/loading';
 
 
 function App(): JSX.Element {
-
-  const isDataLoading = useAppSelector((state) => state.isDataLoading);
-
-  if (isDataLoading) {
-    return (
-      <Loading />
-    );
-  }
 
   return (
     <HelmetProvider>

@@ -9,7 +9,7 @@ const initialState: OfferSearchData = {
 };
 
 export const offerSearchData = createSlice({
-  name: NameSpace.OfferSearch,
+  name: NameSpace.OfferSearchData,
   initialState,
   reducers: {},
   extraReducers(builder) {

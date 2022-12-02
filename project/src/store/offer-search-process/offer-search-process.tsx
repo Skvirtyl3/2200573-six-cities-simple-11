@@ -11,20 +11,17 @@ const initialState: OfferSearchProcess = {
 };
 
 export const offerSearchProcess = createSlice({
-  name: NameSpace.OfferSearch,
+  name: NameSpace.OfferSearchProcess,
   initialState,
   reducers: {
-    setCurrentCity: (state, action: PayloadAction<{city: string}>) => {
-      const {city} = action.payload;
-      state.city = city;
+    setCurrentCity: (state, action: PayloadAction<string>) => {
+      state.city = action.payload;
     },
-    setCitys: (state, action: PayloadAction<{citys: City[]}>) => {
-      const {citys} = action.payload;
-      state.citys = citys;
+    setCitys: (state, action: PayloadAction<City[]>) => {
+      state.citys = action.payload;
     },
-    setOrderOffers: (state, action: PayloadAction<{order: OrderOffersEnum}>) => {
-      const {order} = action.payload;
-      state.orderOffer = order;
+    setOrderOffers: (state, action: PayloadAction<OrderOffersEnum>) => {
+      state.orderOffer = action.payload;
     },
   },
 });

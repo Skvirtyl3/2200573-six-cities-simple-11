@@ -1,6 +1,6 @@
 import {City} from '../../types/city';
 import { selectFilterCity } from '../../store/selector';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 
 type NavLocationProp = {
   location: City;
@@ -9,7 +9,7 @@ type NavLocationProp = {
 
 function NavLocation({location, onClick}:NavLocationProp): JSX.Element
 {
-  const city = useSelector(selectFilterCity);
+  const city = useAppSelector(selectFilterCity);
   const isActive = city && location.name === city.name;
   const styleActive = {border: 'none'};
   const styleNotActive = {backgroundColor: 'transparent', border: 'none'};

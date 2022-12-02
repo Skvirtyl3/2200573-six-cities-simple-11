@@ -1,7 +1,7 @@
 import React from 'react';
 import {citys} from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { setCurrentCity } from '../../store/action';
+import { setCurrentCity } from '../../store/offer-search-process/offer-search-process';
 import NavLocation from '../nav-location/nav-location';
 
 

@@ -3,7 +3,6 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {OfferInfo} from '../types/offer';
 import {Comment, SendComment} from '../types/review';
-import {setComments} from './action';
 import {APIRoute} from '../const';
 import {AuthData, AuhtoriseUser} from '../types/auhtorise';
 import { dropToken, setToken } from '../services/token';
@@ -57,7 +56,7 @@ export const fetchCommentsAction = createAsyncThunk<Comment[], number, {
   },
 );
 
-export const insertCommentsAction = createAsyncThunk<void, SendComment, {
+export const insertCommentsAction = createAsyncThunk<Comment[], SendComment, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -65,7 +64,7 @@ export const insertCommentsAction = createAsyncThunk<void, SendComment, {
   'comment/insertComments',
   async ({offerId, comment, rating}, {dispatch, extra: api}) => {
     const {data} = await api.post<Comment[]>(APIRoute.Comments.replace(':id',offerId.toString()), {comment, rating});
-    dispatch(setComments(data));
+    return data;
   },
 );
 

@@ -13,16 +13,18 @@ import { StyleMap } from '../../types/map';
 import { Location } from '../../types/location';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
-import { setComments, setCurrentOffer, setDataLoadingStatus, setOffersNearby } from '../../store/action';
+import { cleareData } from '../../store/offer-room-data/offer-room-data';
 import PageNotFound from '../page-not-found/page-not-found';
+import { getComments, getCurrentOffer, getOffersNearby, getRoomDataLoadingStatus } from '../../store/offer-room-data/selectors';
+import Loading from '../loading/loading';
 
 
 function Room() : JSX.Element
 {
-  const currentOffer = useAppSelector((state) => state.currentOffer);
-  const nearbyOffers = useAppSelector((state) => state.offersNearby);
-  const comments = useAppSelector((state) => state.comments);
-  const isDataLoading = useAppSelector((state) => state.isDataLoading);
+  const currentOffer = useAppSelector(getCurrentOffer);
+  const offersNearby = useAppSelector(getOffersNearby);
+  const comments = useAppSelector(getComments);
+  const isDataLoading = useAppSelector(getRoomDataLoadingStatus);
   const [hover, setHover] = useState(null as Location | undefined | null);
   const {id} = useParams();
   const offerId = Number(id);
@@ -31,22 +33,18 @@ function Room() : JSX.Element
   useEffect(() => {
     if(offerId)
     {
-      dispatch(setDataLoadingStatus(true));
       dispatch(fetchHotelAction(offerId));
       dispatch(fetchHotelsNearbyAction(offerId));
       dispatch(fetchCommentsAction(offerId));
-      dispatch(setDataLoadingStatus(false));
     }
 
     return () =>
     {
-      dispatch(setCurrentOffer(undefined));
-      dispatch(setOffersNearby([]));
-      dispatch(setComments([]));
+      dispatch(cleareData());
     };
   }, [dispatch, offerId]);
 
-  const points = nearbyOffers.flatMap((item) => item.location);
+  const points = offersNearby.flatMap((item) => item.location);
   if(currentOffer)
   {
     points.push(currentOffer.location);
@@ -57,6 +55,12 @@ function Room() : JSX.Element
     {
       return <PageNotFound/>;
     }
+  }
+
+  if (isDataLoading) {
+    return (
+      <Loading />
+    );
   }
 
 
@@ -166,7 +170,7 @@ function Room() : JSX.Element
           </section>
         }
         <div className="container">
-          <OffersNearby offerParameters={nearbyOffers} currentOfferId={offerId} onMouseEnter={handleOfferMouseEnter}/>
+          <OffersNearby offerParameters={offersNearby} currentOfferId={offerId} onMouseEnter={handleOfferMouseEnter}/>
         </div>
       </main>
     </div>

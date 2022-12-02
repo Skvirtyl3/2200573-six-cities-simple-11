@@ -4,8 +4,10 @@ import Map from '../map/map';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
 import { selectFilterCity, selectFilterOffers } from '../../store/selector';
-import { useSelector } from 'react-redux';
 import { Location } from '../../types/location';
+import Loading from '../../pages/loading/loading';
+import { getSearchDataLoadingStatus } from '../../store/offer-search-data/selectors';
+import { useAppSelector } from '../../hooks';
 
 
 function MainOffersContainer(): JSX.Element
@@ -14,12 +16,19 @@ function MainOffersContainer(): JSX.Element
     setHover(point);
   }
 
-  const city = useSelector(selectFilterCity);
-  const offers = useSelector(selectFilterOffers);
+  const city = useAppSelector(selectFilterCity);
+  const offers = useAppSelector(selectFilterOffers);
+  const isDataLoading = useAppSelector(getSearchDataLoadingStatus);
 
   const points = offers.flatMap((item) => item.location);
 
   const [hover, setHover] = useState(null as Location | undefined | null);
+
+  if (isDataLoading) {
+    return (
+      <Loading />
+    );
+  }
 
   if(offers.length === 0)
   {

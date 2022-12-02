@@ -1,8 +1,9 @@
 import { FormEvent, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute, } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
+import { getIsAuthorised } from '../../store/user-process/selectors';
 
 function LoginForm() : JSX.Element
 {
@@ -11,10 +12,10 @@ function LoginForm() : JSX.Element
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isAuthorised = useAppSelector(getIsAuthorised);
 
   useEffect(() => {
-    if(authorizationStatus === AuthorizationStatus.Auth)
+    if(isAuthorised)
     {
       navigate(AppRoute.Main);
     }

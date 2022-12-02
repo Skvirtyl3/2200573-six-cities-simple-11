@@ -165,7 +165,8 @@ export const stars: Star[] =
 ];
 
 export enum NameSpace {
-  OfferSearch = 'OFFER_SEARCH',
-  OfferRoom = 'OFFER_ROOM',
+  OfferSearchData = 'OFFER_SEARCH_DATA',
+  OfferSearchProcess = 'OFFER_SEARCH_PROCESS',
+  OfferRoomData = 'OFFER_ROOM_DATA',
   User = 'USER'
 }

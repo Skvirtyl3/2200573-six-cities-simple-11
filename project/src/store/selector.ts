@@ -1,12 +1,14 @@
 import { createSelector } from 'reselect';
-import {IInitialState} from '../types/state';
 import { OfferInfo } from '../types/offer';
 import { OrderOffersEnum } from '../const';
+import { getCity, getCitys, getOrderOffer } from './offer-search-process/selectors';
+import { getOffers } from './offer-search-data/selectors';
 
-const selectCity = (state: IInitialState) => state.city;
-const selectCitys = (state: IInitialState) => state.citys;
-const selectOffers = (state: IInitialState) => state.offers;
-const selectOrderOffer = (state: IInitialState) => state.orderOffer;
+
+const selectCity = getCity;
+const selectCitys = getCitys;
+const selectOffers = getOffers;
+const selectOrderOffer = getOrderOffer;
 
 
 export const selectFilterCity = createSelector(
