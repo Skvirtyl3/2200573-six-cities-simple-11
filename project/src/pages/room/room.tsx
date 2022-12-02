@@ -7,7 +7,7 @@ import OffersNearby from '../../components/offers-nearby/offers-nearby';
 import Reviews from '../../components/reviews/reviews';
 import Map from '../../components/map/map';
 import { ZOOM_MAP_ROOM } from '../../const';
-import { GetRatingStileByNumber } from '../../helpers/rating';
+import { GetRatingStileByNumber, Pluralize } from '../../helpers/helpers';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
 import { Location } from '../../types/location';
@@ -109,10 +109,10 @@ function Room() : JSX.Element
                     {currentOffer.type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {currentOffer.bedrooms} Bedrooms
+                    {Pluralize(currentOffer.bedrooms, 'Bedroom')}
                   </li>
                   <li className="property__feature property__feature--adults">
-                    Max {currentOffer.maxAdults} adults
+                    Max {Pluralize(currentOffer.maxAdults, 'adult')}
                   </li>
                 </ul>
                 <div className="property__price">

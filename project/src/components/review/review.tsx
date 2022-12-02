@@ -1,6 +1,6 @@
 import { Comment } from '../../types/review';
 import moment from 'moment';
-import { GetRatingStileByNumber } from '../../helpers/rating';
+import { GetRatingStileByNumber } from '../../helpers/helpers';
 
 type ReviewProp = {
   comment: Comment;

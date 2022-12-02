@@ -4,3 +4,8 @@ export function GetRatingStileByNumber(value: number): string
 {
   return (value * ONE_STAR_WIDTH).toString().concat('%');
 }
+
+export function Pluralize(count: number, noun: string, suffix = 's')
+{
+  return `${count} ${noun}${count !== 1 ? suffix : ''}`;
+}

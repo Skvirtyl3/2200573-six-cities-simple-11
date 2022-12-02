@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { OfferInfo } from '../../types/offer';
 import { AppRoute } from '../../const';
-import { GetRatingStileByNumber } from '../../helpers/rating';
+import { GetRatingStileByNumber } from '../../helpers/helpers';
 import { Location } from '../../types/location';
 
 type OfferProps = {
@@ -12,7 +12,7 @@ type OfferProps = {
 function Offer(props:OfferProps): JSX.Element
 {
   const {offerParameter: roomParameter} = props;
-  const ratingWidth: string = GetRatingStileByNumber(roomParameter.rating);
+  const ratingWidth: string = GetRatingStileByNumber(Math.round(roomParameter.rating));
   return(
     <article
       onMouseEnter={(event) => {
