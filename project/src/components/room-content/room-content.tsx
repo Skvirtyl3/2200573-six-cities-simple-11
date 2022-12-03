@@ -6,12 +6,13 @@ import Map from '../../components/map/map';
 import { REVIEW_ITEMS_COUNT, ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber, Pluralize } from '../../helpers/helpers';
 import { StyleMap } from '../../types/map';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getComments, getCurrentOffer, getErrorStatus, getOffersNearby, getRoomDataLoadingStatus } from '../../store/offer-room-data/selectors';
 import {Comment} from '../../types/review';
 import classNames from 'classnames';
-import RoomErrorScreen from '../room-error-screen/room-error-screen';
+import ErrorScreen from '../error-screen/error-screen';
 import Loading from '../../pages/loading/loading';
+import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
 
 type RoomContentProp = {
   offerId: number;
@@ -19,6 +20,7 @@ type RoomContentProp = {
 
 function RoomContent({offerId}: RoomContentProp) : JSX.Element
 {
+  const dispatch = useAppDispatch();
   const currentOffer = useAppSelector(getCurrentOffer);
   const offersNearby = useAppSelector(getOffersNearby);
   const comments = useAppSelector(getComments);
@@ -50,7 +52,12 @@ function RoomContent({offerId}: RoomContentProp) : JSX.Element
 
   if (hasError) {
     return (
-      <RoomErrorScreen offerId={offerId}/>);
+      <ErrorScreen errorText='Не удалось загрузить информацию по предложению' onClick={() => {
+        dispatch(fetchHotelAction(offerId));
+        dispatch(fetchHotelsNearbyAction(offerId));
+        dispatch(fetchCommentsAction(offerId));
+      }}
+      />);
   }
 
   return(

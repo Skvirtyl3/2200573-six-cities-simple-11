@@ -18,6 +18,7 @@ export type UserProcess = {
 export type OfferSearchData = {
   offers: OfferInfo[];
   isDataLoading: boolean;
+  hasError: boolean;
 };
 
 export type OfferSearchProcess = {

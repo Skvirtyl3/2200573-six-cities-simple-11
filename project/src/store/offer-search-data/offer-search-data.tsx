@@ -6,6 +6,7 @@ import {fetchHotelsAction} from '../api-actions';
 const initialState: OfferSearchData = {
   offers: [],
   isDataLoading: false,
+  hasError: false,
 };
 
 export const offerSearchData = createSlice({
@@ -16,6 +17,7 @@ export const offerSearchData = createSlice({
     builder
       .addCase(fetchHotelsAction.pending, (state) => {
         state.isDataLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchHotelsAction.fulfilled, (state, action) => {
         state.offers = action.payload;
@@ -23,6 +25,7 @@ export const offerSearchData = createSlice({
       })
       .addCase(fetchHotelsAction.rejected, (state) => {
         state.isDataLoading = false;
+        state.hasError = true;
       });
   }
 });
