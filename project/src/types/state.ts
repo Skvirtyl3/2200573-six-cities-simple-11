@@ -33,4 +33,5 @@ export type OfferRoomData = {
   comments: Comment[];
   isDataLoading: boolean;
   isMessageSending: boolean;
+  hasError: boolean;
 };

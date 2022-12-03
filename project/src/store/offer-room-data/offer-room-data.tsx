@@ -9,6 +9,7 @@ const initialState: OfferRoomData = {
   comments: [],
   isDataLoading: false,
   isMessageSending: false,
+  hasError: false,
 };
 
 export const offerRoomData = createSlice({
@@ -25,6 +26,7 @@ export const offerRoomData = createSlice({
     builder
       .addCase(fetchHotelAction.pending, (state) => {
         state.isDataLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchHotelAction.fulfilled, (state, action) => {
         state.currentOffer = action.payload;
@@ -32,9 +34,11 @@ export const offerRoomData = createSlice({
       })
       .addCase(fetchHotelAction.rejected, (state) => {
         state.isDataLoading = false;
+        state.hasError = true;
       })
       .addCase(fetchHotelsNearbyAction.pending, (state) => {
         state.isDataLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchHotelsNearbyAction.fulfilled, (state, action) => {
         state.offersNearby = action.payload;
@@ -42,9 +46,11 @@ export const offerRoomData = createSlice({
       })
       .addCase(fetchHotelsNearbyAction.rejected, (state) => {
         state.isDataLoading = false;
+        state.hasError = true;
       })
       .addCase(fetchCommentsAction.pending, (state) => {
         state.isDataLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchCommentsAction.fulfilled, (state, action) => {
         state.comments = action.payload;
@@ -52,6 +58,7 @@ export const offerRoomData = createSlice({
       })
       .addCase(fetchCommentsAction.rejected, (state) => {
         state.isDataLoading = false;
+        state.hasError = true;
       })
       .addCase(insertCommentsAction.pending, (state) => {
         state.isMessageSending = true;
