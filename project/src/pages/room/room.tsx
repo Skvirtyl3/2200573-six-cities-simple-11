@@ -16,6 +16,7 @@ import PageNotFound from '../page-not-found/page-not-found';
 import { getComments, getCurrentOffer, getOffersNearby, getRoomDataLoadingStatus } from '../../store/offer-room-data/selectors';
 import Loading from '../loading/loading';
 import {Comment} from '../../types/review';
+import classNames from 'classnames';
 
 
 function Room() : JSX.Element
@@ -61,9 +62,14 @@ function Room() : JSX.Element
   const commentsList = comments.slice().sort((a: Comment, b: Comment) => new Date(a.date) < new Date(b.date) ? 1 : -1).slice(0, REVIEW_ITEMS_COUNT);
 
   let titleHelmet = 'Шесть городов.';
-  if(currentOffer !== undefined)
+  let userClass = 'property__avatar-wrapper user__avatar-wrapper';
+  if(currentOffer)
   {
     titleHelmet = (typeof(id) === 'string' ? titleHelmet.concat(' ',currentOffer.title ,'.') : titleHelmet );
+
+    userClass = classNames('property__avatar-wrapper user__avatar-wrapper', {
+      'property__avatar-wrapper--pro ': currentOffer.host.isPro
+    });
   }
   const ratingWidth: string = currentOffer ? GetRatingStileByNumber(currentOffer.rating) : '0%';
 
@@ -134,7 +140,7 @@ function Room() : JSX.Element
                     <Fragment>
                       <h2 className="property__host-title">Meet the host</h2>
                       <div className="property__host-user user">
-                        <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
+                        <div className={userClass}>
                           <img className="property__avatar user__avatar" src={currentOffer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
                         </div>
                         <span className="property__user-name">
