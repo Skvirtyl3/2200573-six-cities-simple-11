@@ -10,6 +10,7 @@ const initialState: OfferRoomData = {
   isDataLoading: false,
   isMessageSending: false,
   hasError: false,
+  hasMessageSendingError: false,
 };
 
 export const offerRoomData = createSlice({
@@ -62,6 +63,7 @@ export const offerRoomData = createSlice({
       })
       .addCase(insertCommentsAction.pending, (state) => {
         state.isMessageSending = true;
+        state.hasMessageSendingError = false;
       })
       .addCase(insertCommentsAction.fulfilled, (state, action) => {
         state.comments = action.payload;
@@ -69,6 +71,7 @@ export const offerRoomData = createSlice({
       })
       .addCase(insertCommentsAction.rejected, (state) => {
         state.isMessageSending = false;
+        state.hasMessageSendingError = true;
       });
   }
 });

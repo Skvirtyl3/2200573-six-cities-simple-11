@@ -34,4 +34,5 @@ export type OfferRoomData = {
   isDataLoading: boolean;
   isMessageSending: boolean;
   hasError: boolean;
+  hasMessageSendingError: boolean;
 };

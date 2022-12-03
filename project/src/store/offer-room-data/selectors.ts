@@ -9,4 +9,5 @@ export const getComments = (state: State): Comment[] => state[NameSpace.OfferRoo
 export const getRoomDataLoadingStatus = (state: State): boolean => state[NameSpace.OfferRoomData].isDataLoading;
 export const getMessageSending = (state: State): boolean => state[NameSpace.OfferRoomData].isMessageSending;
 export const getErrorStatus = (state: State): boolean => state[NameSpace.OfferRoomData].hasError;
+export const getMessageSendingError = (state: State): boolean => state[NameSpace.OfferRoomData].hasMessageSendingError;
 
