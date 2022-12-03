@@ -48,19 +48,19 @@ export const OrderOffers =
 [
   {
     key: OrderOffersEnum.Popular,
-    title: 'Популярные'
+    title: 'Popular'
   },
   {
     key: OrderOffersEnum.LowToHighPrice,
-    title: 'От дешёвых к дорогим'
+    title: 'Price: low to high'
   },
   {
     key: OrderOffersEnum.HighToLowPrice,
-    title: 'От дорогих к дешёвым'
+    title: 'Price: high to low'
   },
   {
     key: OrderOffersEnum.TopRatedFirst,
-    title: 'От высокого рейтинга к низкому'
+    title: 'Top rated first'
   },
 ];
 
