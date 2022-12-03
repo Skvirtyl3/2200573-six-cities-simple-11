@@ -4,6 +4,7 @@ import { City } from '../types/city';
 import { OfferInfo } from '../types/offer';
 import { Comment } from '../types/review';
 import { AuhtoriseUser } from './auhtorise.js';
+import { Location } from '../types/location';
 
 export type State = ReturnType<typeof store.getState>;
 
@@ -23,6 +24,7 @@ export type OfferSearchProcess = {
   city: string;
   citys: City[];
   orderOffer: OrderOffersEnum;
+  hoverOfferPoint: Location | undefined | null;
 }
 
 export type OfferRoomData = {

@@ -6,12 +6,13 @@ import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import 'leaflet/dist/leaflet.css';
 import { City } from '../../types/city';
 import { Location } from '../../types/location';
+import { getHoverOfferPoint } from '../../store/offer-search-process/selectors';
+import { useAppSelector } from '../../hooks';
 
 type MapProps = {
   city: City | undefined;
   points: Location[];
-  selectedPoint?: Location | undefined | null; //точка выбранного предложения /offer/id
-  hoveredPoint?: Location | undefined | null; //точка предложения из активнаой карточки из списка
+  selectedPoint?: Location | undefined | null;
   zoom: number;
   styleMap: StyleMap;
 };
@@ -53,7 +54,8 @@ function GetPointIcon(point: Location, selectedPoint: Location | undefined | nul
 }
 
 function Map(props: MapProps): JSX.Element {
-  const {city, points, selectedPoint, hoveredPoint, zoom, styleMap} = props;
+  const {city, points, selectedPoint, zoom, styleMap} = props;
+  const hoveredPoint = useAppSelector(getHoverOfferPoint);
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, hoveredPoint || selectedPoint || city?.location, zoom);

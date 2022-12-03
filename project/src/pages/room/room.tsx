@@ -8,9 +8,7 @@ import Reviews from '../../components/reviews/reviews';
 import Map from '../../components/map/map';
 import { REVIEW_ITEMS_COUNT, ZOOM_MAP_ROOM } from '../../const';
 import { GetRatingStileByNumber, Pluralize } from '../../helpers/helpers';
-import { useState } from 'react';
 import { StyleMap } from '../../types/map';
-import { Location } from '../../types/location';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
 import { cleareData } from '../../store/offer-room-data/offer-room-data';
@@ -26,7 +24,6 @@ function Room() : JSX.Element
   const offersNearby = useAppSelector(getOffersNearby);
   const comments = useAppSelector(getComments);
   const isDataLoading = useAppSelector(getRoomDataLoadingStatus);
-  const [hover, setHover] = useState(null as Location | undefined | null);
   const {id} = useParams();
   const offerId = Number(id);
   const dispatch = useAppDispatch();
@@ -69,10 +66,6 @@ function Room() : JSX.Element
     titleHelmet = (typeof(id) === 'string' ? titleHelmet.concat(' ',currentOffer.title ,'.') : titleHelmet );
   }
   const ratingWidth: string = currentOffer ? GetRatingStileByNumber(currentOffer.rating) : '0%';
-
-  function handleOfferMouseEnter(point:Location | undefined | null): void {
-    setHover(point);
-  }
 
   return(
     <div className="page">
@@ -164,12 +157,12 @@ function Room() : JSX.Element
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: 'none'}}>
-              <Map city={currentOffer.city} points={points} selectedPoint={currentOffer.location} hoveredPoint={hover} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
+              <Map city={currentOffer.city} points={points} selectedPoint={currentOffer.location} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
             </section>
           </section>
         }
         <div className="container">
-          <OffersNearby offerParameters={offersNearby} currentOfferId={offerId} onMouseEnter={handleOfferMouseEnter}/>
+          <OffersNearby offerParameters={offersNearby} currentOfferId={offerId}/>
         </div>
       </main>
     </div>
