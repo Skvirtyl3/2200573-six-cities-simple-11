@@ -8,7 +8,7 @@ import NavLocation from '../nav-location/nav-location';
 function NavLocations(): JSX.Element
 {
   const dispatch = useAppDispatch();
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>): void {
+  function handleButtonClick(e: React.MouseEvent<HTMLButtonElement>): void {
     const {value} = e.currentTarget;
 
     dispatch(setCurrentCity(value));
@@ -18,7 +18,7 @@ function NavLocations(): JSX.Element
     <section className="locations container">
       <ul className="locations__list tabs__list">
         {citys.map((item) =>
-          <NavLocation key={item.name} location={item} onClick={handleClick}/>
+          <NavLocation key={item.name} location={item} onClick={handleButtonClick}/>
         )}
       </ul>
     </section>
