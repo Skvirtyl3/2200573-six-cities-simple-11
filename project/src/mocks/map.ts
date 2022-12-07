@@ -1,49 +1,47 @@
-import {Point} from '../types/map';
+import { Location } from '../types/location';
 
-export const points: Point[] =
+export const points: Location[] =
 [
   {
-    title: 'Point1',
-    lat: 52.3909553943508,
-    lng: 4.85309666406198
+    latitude: 52.3909553943508,
+    longitude: 4.85309666406198,
+    zoom: 10
   },
   {
-    title: 'Point2',
-    lat: 52.3609553943508,
-    lng: 4.85309666406198
+    latitude: 52.3609553943508,
+    longitude: 4.85309666406198,
+    zoom: 10
   },
   {
-    title: 'Point3',
-    lat: 52.3909553943508,
-    lng: 4.929309666406198
+    latitude: 52.3909553943508,
+    longitude: 4.929309666406198,
+    zoom: 10
   },
   {
-    title: 'Point4',
-    lat: 52.3809553943508,
-    lng: 4.939309666406198
+    latitude: 52.3809553943508,
+    longitude: 4.939309666406198,
+    zoom: 10
   },
   {
-    title: 'Point5',
-    lat: 48.50,
-    lng: 2.20
+    latitude: 48.50,
+    longitude: 2.20,
+    zoom: 10
   },
   {
-    title: 'Point6',
-    lat: 50.55,
-    lng: 6.57
+    latitude: 50.55,
+    longitude: 6.57,
+    zoom: 10
   },
   {
-    title: 'Point7',
-    lat: 50.50,
-    lng: 4.21
+    latitude: 50.50,
+    longitude: 4.21,
+    zoom: 10
   },
   {
-    title: 'Point8',
-    lat: 53.57,
-    lng: 10.01
+    latitude: 53.57,
+    longitude: 10.01,
+    zoom: 10
   },
 
 ];
 
-
-export const selectedPoint = 'Point1';

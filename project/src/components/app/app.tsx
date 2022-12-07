@@ -7,21 +7,21 @@ import PageNotFound from '../../pages/page-not-found/page-not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import Scroll from '../sroll/scroll';
-import { useAppDispatch } from '../../hooks';
-import { useEffect } from 'react';
-import { getCitys, getOffers } from '../../store/action';
-import { roomParameters } from '../../mocks/offers';
-import { citys } from '../../mocks/city';
+import { useAppSelector } from '../../hooks';
+import Loading from '../../pages/loading/loading';
+
 
 
 function App(): JSX.Element {
 
-  const dispatch = useAppDispatch();
+  const isDataLoading = useAppSelector((state) => state.isDataLoading);
 
-  useEffect(() => {
-    dispatch(getCitys(citys));
-    dispatch(getOffers(roomParameters));
-  });
+
+  if (isDataLoading) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <HelmetProvider>

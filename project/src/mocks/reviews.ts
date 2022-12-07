@@ -1,4 +1,4 @@
-import { Rank, Rating } from '../types/offer';
+import { Rating } from '../types/offer';
 import { ReviewType, Star} from '../types/review';
 
 export const reviews: ReviewType[] =
@@ -9,9 +9,10 @@ export const reviews: ReviewType[] =
   date: new Date(2019,3,24),
   host:
   {
-    name : 'Max',
-    rank: Rank.Pro,
-    avatar: 'img/avatar-max.jpg'
+    id: 1,
+    name: 'Max',
+    isPro: true,
+    avatarUrl: 'img/avatar-max.jpg'
   },
 }];
 

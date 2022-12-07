@@ -1,17 +1,16 @@
 import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import {Map, TileLayer} from 'leaflet';
-import { Point} from '../types/map';
 import {LAYER_MAP, ATTRIBUTE_LAYER_MAP} from '../const';
-import { City } from '../types/city';
+import { Location } from '../types/location';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  point: City | Point | undefined,
+  point: Location | undefined,
   zoom: number
 ): Map | null {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
-  const pointRef = useRef<City | Point | undefined>(point);
+  const pointRef = useRef<Location | undefined>(point);
   const zoomRef = useRef<number>(zoom);
 
   useEffect(() => {
@@ -24,12 +23,11 @@ function useMap(
       };
     }
 
-    //карту рисуем по новой
     if (!isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
         center: {
-          lat: point.lat,
-          lng: point.lng
+          lat: point.latitude,
+          lng: point.longitude
         },
         zoom: zoom
       });
@@ -44,32 +42,22 @@ function useMap(
 
       instance.addLayer(layer);
 
-      //https://mourner.github.io/Leaflet/reference.html#map-maxbounds
-      //описываемграницы карты
-      // instance.setMaxBounds([
-      //   [52.32, 4.8],
-      //   [52.40, 4.96]
-      // ]);
-
       if(isMapMounted)
       {
         setMap(instance);
         isRenderedRef.current = true;
         pointRef.current = point;
         zoomRef.current = zoom;
-        // console.log('Карта была создана');
       }
     }
 
-    //у карты редактируем центрирование и зум
     if (pointRef.current === undefined ||
-        pointRef.current.lat !== point.lat ||
-        pointRef.current.lng !== point.lng )
+        pointRef.current.latitude !== point.latitude ||
+        pointRef.current.longitude !== point.longitude )
     {
-      map !== undefined && isMapMounted && map?.setView([point.lat, point.lng], zoom);
+      map !== undefined && isMapMounted && map?.setView([point.latitude, point.longitude], zoom);
       pointRef.current = point;
       zoomRef.current = zoom;
-      // console.log('Карта была отредактирована');
     }
 
     return () =>

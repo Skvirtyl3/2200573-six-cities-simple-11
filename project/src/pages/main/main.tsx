@@ -2,25 +2,27 @@ import Logo from '../../components/logo/logo';
 import { Helmet } from 'react-helmet-async';
 import LocationsNav from '../../components/nav-locations/nav-locations';
 import OffersList from '../../components/offers-list/offers-list';
-import { points } from '../../mocks/map';
 import { ZOOM_MAP_GLOBAL } from '../../const';
 import Map from '../../components/map/map';
 import { useState } from 'react';
 import { StyleMap } from '../../types/map';
 import { selectFilterCity, selectFilterOffers } from '../../store/selector';
 import { useSelector } from 'react-redux';
+import { Location } from '../../types/location';
 
 
 function Main(): JSX.Element
 {
-  function handleOfferMouseEnter(id:string): void {
-    setHover(id);
+  function handleOfferMouseEnter(point: Location | undefined | null): void {
+    setHover(point);
   }
 
   const city = useSelector(selectFilterCity);
   const offers = useSelector(selectFilterOffers);
 
-  const [hover, setHover] = useState('');
+  const points = offers.flatMap((item) => item.location);
+
+  const [hover, setHover] = useState(null as Location | undefined | null);
   return(
     <div className="page page--gray page--main">
       <Helmet><title>Шесть городов. Поиск предложений.</title></Helmet>
@@ -38,7 +40,7 @@ function Main(): JSX.Element
             <OffersList offerParameters={offers} onMouseEnter={handleOfferMouseEnter}/>
             <div className="cities__right-section">
               <section className="cities__map map" style={{backgroundImage: 'none'}}>
-                <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} hoveredPointKey={hover} styleMap={StyleMap.Main}/>
+                <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} hoveredPoint={hover} styleMap={StyleMap.Main}/>
               </section>
             </div>
           </div>

@@ -1,4 +1,5 @@
-import { Host, Rating } from './offer';
+import { Host } from './host';
+import { Rating } from './offer';
 
 export type ReviewType = {
   key: string;

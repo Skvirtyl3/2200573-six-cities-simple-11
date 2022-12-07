@@ -17,7 +17,7 @@ function NavLocations(): JSX.Element
     <section className="locations container">
       <ul className="locations__list tabs__list">
         {citys.map((item) =>
-          <NavLocation key={item.key} location={item} onClick={handleClick}/>
+          <NavLocation key={item.name} location={item} onClick={handleClick}/>
         )}
       </ul>
     </section>
