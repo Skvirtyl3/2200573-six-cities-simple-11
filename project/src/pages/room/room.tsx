@@ -6,13 +6,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
 import { cleareData } from '../../store/offer-room-data/offer-room-data';
 import PageNotFound from '../page-not-found/page-not-found';
-import { getCurrentOffer } from '../../store/offer-room-data/selectors';
+import { getCurrentOffer, getRoomDataLoadingStatus } from '../../store/offer-room-data/selectors';
 import RoomContent from '../../components/room-content/room-content';
 
 
 function Room() : JSX.Element
 {
   const currentOffer = useAppSelector(getCurrentOffer);
+  const isDataLoading = useAppSelector(getRoomDataLoadingStatus);
   const {id} = useParams();
   const offerId = Number(id);
   const dispatch = useAppDispatch();
@@ -31,7 +32,7 @@ function Room() : JSX.Element
     };
   }, [dispatch, offerId]);
 
-  if(!currentOffer)
+  if(!currentOffer && !isDataLoading)
   {
     return <PageNotFound/>;
   }
