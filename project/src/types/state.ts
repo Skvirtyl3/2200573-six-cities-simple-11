@@ -1,7 +1,8 @@
-import { OrderOffersEnum } from '../const.js';
+import { AuthorizationStatus, OrderOffersEnum } from '../const.js';
 import {store} from '../store/index.js';
 import { City } from '../types/city';
 import { OfferType } from '../types/offer';
+import { AuhtoriseUser } from './auhtorise.js';
 
 export type State = ReturnType<typeof store.getState>;
 
@@ -13,5 +14,6 @@ export interface IInitialState {
   offers: OfferType[];
   orderOffer: OrderOffersEnum;
   isDataLoading: boolean;
+  authorizationStatus: AuthorizationStatus;
+  auhtoriseUser: AuhtoriseUser | undefined;
 }
-

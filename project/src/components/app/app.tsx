@@ -1,6 +1,6 @@
 import Main from '../../pages/main/main';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import Room from '../../pages/room/room';
 import Login from '../../pages/login/login';
 import PageNotFound from '../../pages/page-not-found/page-not-found';
@@ -15,6 +15,7 @@ import Loading from '../../pages/loading/loading';
 function App(): JSX.Element {
 
   const isDataLoading = useAppSelector((state) => state.isDataLoading);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
 
   if (isDataLoading) {
@@ -31,14 +32,18 @@ function App(): JSX.Element {
           <Route
             path={AppRoute.Main}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <PrivateRoute authorizationStatus={authorizationStatus}>
                 <Main/>
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.RoomById}
-            element={<Room/>}
+            element={
+              <PrivateRoute authorizationStatus={authorizationStatus}>
+                <Room/>
+              </PrivateRoute>
+            }
           />
           <Route
             path={AppRoute.Login}

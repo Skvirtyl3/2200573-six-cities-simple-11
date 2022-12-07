@@ -74,3 +74,5 @@ export enum APIRoute {
   Login = '/login',
   Logout = '/logout',
 }
+
+export const AUTH_TOKEN_KEY_NAME = 'six-cities-2200573';
