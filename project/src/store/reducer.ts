@@ -35,6 +35,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuhtoriseUser, (state, action) => {
       state.auhtoriseUser = action.payload;
+
     });
 });
 

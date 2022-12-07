@@ -4,6 +4,7 @@ import { OfferType } from '../types/offer';
 import { City} from '../types/city';
 import { AuhtoriseUser } from '../types/auhtorise';
 
+
 export const setCurrentCity = createAction('city/setCurrentCity', (value: string) =>
   ({
     payload: value

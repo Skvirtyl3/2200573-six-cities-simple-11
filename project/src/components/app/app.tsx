@@ -11,10 +11,12 @@ import { useAppSelector } from '../../hooks';
 import Loading from '../../pages/loading/loading';
 
 
+
 function App(): JSX.Element {
 
   const isDataLoading = useAppSelector((state) => state.isDataLoading);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
 
   if (isDataLoading) {
     return (
