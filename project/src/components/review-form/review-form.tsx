@@ -26,7 +26,7 @@ function ReviewForm({offerId}:ReviewFormProp) : JSX.Element
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === 'rating' ? Number(value) : value,
     });
   }
 
