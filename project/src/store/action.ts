@@ -3,6 +3,7 @@ import { OrderOffersEnum } from '../const';
 import { OfferType } from '../types/offer';
 import { City} from '../types/city';
 
+
 export const setCurrentCity = createAction('city/setCurrentCity', (value: string) =>
   ({
     payload: value

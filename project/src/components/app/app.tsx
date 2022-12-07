@@ -11,9 +11,11 @@ import { useAppSelector } from '../../hooks';
 import Loading from '../../pages/loading/loading';
 
 
+
 function App(): JSX.Element {
 
   const isDataLoading = useAppSelector((state) => state.isDataLoading);
+
 
   if (isDataLoading) {
     return (
