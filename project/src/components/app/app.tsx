@@ -4,7 +4,6 @@ import { AppRoute } from '../../const';
 import Room from '../../pages/room/room';
 import Login from '../../pages/login/login';
 import PageNotFound from '../../pages/page-not-found/page-not-found';
-import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import Scroll from '../sroll/scroll';
 import { useAppSelector } from '../../hooks';
@@ -15,7 +14,6 @@ import Loading from '../../pages/loading/loading';
 function App(): JSX.Element {
 
   const isDataLoading = useAppSelector((state) => state.isDataLoading);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
 
   if (isDataLoading) {
@@ -32,17 +30,13 @@ function App(): JSX.Element {
           <Route
             path={AppRoute.Main}
             element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <Main/>
-              </PrivateRoute>
+              <Main/>
             }
           />
           <Route
             path={AppRoute.RoomById}
             element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <Room/>
-              </PrivateRoute>
+              <Room/>
             }
           />
           <Route

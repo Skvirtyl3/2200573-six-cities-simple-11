@@ -60,6 +60,12 @@ function Map(props: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
+      map.eachLayer((layer) => {
+        if (layer instanceof Marker) {
+          map.removeLayer(layer);
+        }
+      });
+
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.latitude,

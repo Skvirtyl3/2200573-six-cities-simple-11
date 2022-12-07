@@ -1,4 +1,4 @@
-import {citys} from '../../mocks/city';
+import {citys} from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { setCurrentCity } from '../../store/action';
 import NavLocation from '../nav-location/nav-location';

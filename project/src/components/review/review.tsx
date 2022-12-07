@@ -1,24 +1,24 @@
-import { ReviewType } from '../../types/review';
+import { Comment } from '../../types/review';
 import moment from 'moment';
 import { GetRatingStileByNumber } from '../../helpers/rating';
 
 type ReviewProp = {
-  review: ReviewType;
+  comment: Comment;
 }
 
-function Review({review}:ReviewProp) :JSX.Element
+function Review({comment}:ReviewProp) :JSX.Element
 {
-  const ratingWidth: string = GetRatingStileByNumber(review.rating);
+  const ratingWidth: string = GetRatingStileByNumber(comment.rating);
   return(
     <li className="reviews__item">
       {
-        review.host &&
+        comment.user &&
         <div className="reviews__user user">
           <div className="reviews__avatar-wrapper user__avatar-wrapper">
-            <img className="reviews__avatar user__avatar" src={review.host.avatarUrl} width="54" height="54" alt="Reviews avatar" />
+            <img className="reviews__avatar user__avatar" src={comment.user.avatarUrl} width="54" height="54" alt="Reviews avatar" />
           </div>
           <span className="reviews__user-name">
-            {review.host.name}
+            {comment.user.name}
           </span>
         </div>
       }
@@ -30,9 +30,9 @@ function Review({review}:ReviewProp) :JSX.Element
           </div>
         </div>
         <p className="reviews__text">
-          {review.text}
+          {comment.comment}
         </p>
-        <time className="reviews__time" dateTime={(moment(review.date)).format('YYYY-MM-DD')}>{(moment(review.date)).format('MMM YYYY')}</time>
+        <time className="reviews__time" dateTime={(moment(comment.date)).format('YYYY-MM-DD')}>{(moment(comment.date)).format('MMM YYYY')}</time>
       </div>
     </li>
   );
