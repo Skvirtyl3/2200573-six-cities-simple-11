@@ -14,7 +14,7 @@ const initialState: OfferRoomData = {
 };
 
 export const offerRoomData = createSlice({
-  name: NameSpace.OfferSearchData,
+  name: NameSpace.OfferRoomData,
   initialState,
   reducers: {
     cleareData: (state) => {
