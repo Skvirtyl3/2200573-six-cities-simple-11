@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {NameSpace, OrderOffersEnum} from '../../const';
+import {NameSpace, OrderOffer} from '../../const';
 import {OfferSearchProcess} from '../../types/state';
 import {DEFAULT_CITY, DEFAULT_ORDER_OFFERS} from '../../const';
 import { City } from '../../types/city';
@@ -22,7 +22,7 @@ export const offerSearchProcess = createSlice({
     setCitys: (state, action: PayloadAction<City[]>) => {
       state.citys = action.payload;
     },
-    setOrderOffers: (state, action: PayloadAction<OrderOffersEnum>) => {
+    setOrderOffers: (state, action: PayloadAction<OrderOffer>) => {
       state.orderOffer = action.payload;
     },
     setHoverOfferPoint: (state, action: PayloadAction<Location | undefined | null>) => {

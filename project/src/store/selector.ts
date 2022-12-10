@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { OfferInfo } from '../types/offer';
-import { OrderOffersEnum } from '../const';
+import { OrderOffer } from '../const';
 import { getCity, getCitys, getOrderOffer } from './offer-search-process/selectors';
 import { getOffers } from './offer-search-data/selectors';
 
@@ -26,16 +26,16 @@ export const selectFilterOffers = createSelector(
       (a: OfferInfo,b: OfferInfo) =>
       {
         switch(order) {
-          case OrderOffersEnum.Popular:
+          case OrderOffer.Popular:
             return 0;
             break;
-          case OrderOffersEnum.HighToLowPrice:
+          case OrderOffer.HighToLowPrice:
             return b.price - a.price;
             break;
-          case OrderOffersEnum.LowToHighPrice:
+          case OrderOffer.LowToHighPrice:
             return a.price - b.price;
             break;
-          case OrderOffersEnum.TopRatedFirst:
+          case OrderOffer.TopRatedFirst:
             return b.rating - a.rating;
             break;
           default:

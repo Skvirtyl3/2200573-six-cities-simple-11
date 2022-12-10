@@ -1,4 +1,4 @@
-import { AuthorizationStatus, OrderOffersEnum } from '../const.js';
+import { AuthorizationStatus, OrderOffer } from '../const.js';
 import {store} from '../store/index.js';
 import { City } from '../types/city';
 import { OfferInfo } from '../types/offer';
@@ -24,7 +24,7 @@ export type OfferSearchData = {
 export type OfferSearchProcess = {
   city: string;
   citys: City[];
-  orderOffer: OrderOffersEnum;
+  orderOffer: OrderOffer;
   hoverOfferPoint: Location | undefined | null;
 }
 
