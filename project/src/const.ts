@@ -36,7 +36,7 @@ export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3;
 export const DEFAULT_CITY = 'Paris';
 
-export enum OrderOffersEnum
+export enum OrderOffer
 {
   Popular = 1,
   LowToHighPrice = 2,
@@ -47,24 +47,24 @@ export enum OrderOffersEnum
 export const OrderOffers =
 [
   {
-    key: OrderOffersEnum.Popular,
+    key: OrderOffer.Popular,
     title: 'Popular'
   },
   {
-    key: OrderOffersEnum.LowToHighPrice,
+    key: OrderOffer.LowToHighPrice,
     title: 'Price: low to high'
   },
   {
-    key: OrderOffersEnum.HighToLowPrice,
+    key: OrderOffer.HighToLowPrice,
     title: 'Price: high to low'
   },
   {
-    key: OrderOffersEnum.TopRatedFirst,
+    key: OrderOffer.TopRatedFirst,
     title: 'Top rated first'
   },
 ];
 
-export const DEFAULT_ORDER_OFFERS = OrderOffersEnum.Popular;
+export const DEFAULT_ORDER_OFFERS = OrderOffer.Popular;
 
 
 export const BACKEND_URL = 'https://11.react.pages.academy/six-cities-simple';

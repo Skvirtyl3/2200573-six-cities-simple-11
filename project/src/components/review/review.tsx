@@ -32,7 +32,7 @@ function Review({comment}:ReviewProp) :JSX.Element
         <p className="reviews__text">
           {comment.comment}
         </p>
-        <time className="reviews__time" dateTime={(moment(comment.date)).format('YYYY-MM-DD')}>{(moment(comment.date)).format('MMM YYYY')}</time>
+        <time className="reviews__time" dateTime={(moment(comment.date)).format('YYYY-MM-DD')}>{(moment(comment.date)).format('MMMM YYYY')}</time>
       </div>
     </li>
   );

@@ -5,7 +5,7 @@ import Room from '../../pages/room/room';
 import Login from '../../pages/login/login';
 import PageNotFound from '../../pages/page-not-found/page-not-found';
 import { HelmetProvider } from 'react-helmet-async';
-import Scroll from '../sroll/scroll';
+import Scroll from '../scroll/scroll';
 
 
 function App(): JSX.Element {
