@@ -1,5 +1,5 @@
 import OffersList from '../offers-list/offers-list';
-import { ZOOM_MAP_GLOBAL } from '../../const';
+import { ZoomMap } from '../../const';
 import Map from '../map/map';
 import { StyleMap } from '../../types/map';
 import { selectFilterCity, selectFilterOffers } from '../../store/selector';
@@ -49,7 +49,7 @@ function MainOffersContainer(): JSX.Element
       <OffersList offerParameters={offers}/>
       <div className="cities__right-section">
         <section className="cities__map map main-map">
-          <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} styleMap={StyleMap.Main}/>
+          <Map city={city} points={points} zoom={ZoomMap.ZoomMapGlobal} styleMap={StyleMap.Main}/>
         </section>
       </div>
     </div>);

@@ -2,7 +2,7 @@ import {useRef, useEffect} from 'react';
 import {Icon, Marker} from 'leaflet';
 import useMap from '../../hooks/useMap';
 import {StyleMap} from '../../types/map';
-import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
+import {UrlMarker} from '../../const';
 import 'leaflet/dist/leaflet.css';
 import { City } from '../../types/city';
 import { Location } from '../../types/location';
@@ -20,19 +20,19 @@ type MapProps = {
 };
 
 const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
+  iconUrl: UrlMarker.UrlMarkerDefault,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
 
 const selectedCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
+  iconUrl: UrlMarker.UrlMarkerCurrent,
   iconSize: [50, 50],
   iconAnchor: [20, 50]
 });
 
 const hoveredCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
+  iconUrl: UrlMarker.UrlMarkerCurrent,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });

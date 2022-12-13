@@ -1,4 +1,4 @@
-import { MAX_REQURID_SYMBOL_COUNT, MIN_REQURID_SYMBOL_COUNT, stars } from '../../const';
+import { RequridSymbolCont, stars } from '../../const';
 import ReviewStar from '../review-star/review-star';
 import {useState} from 'react';
 import { insertCommentsAction } from '../../store/api-actions';
@@ -40,12 +40,12 @@ function ReviewForm({offerId}:ReviewFormProp) : JSX.Element
       <div className="reviews__rating-form form__rating">
         {stars.map((item) => (<ReviewStar key={item.key} star={item} handleFieldChange={handleFieldChange} disabled={isMessageSending} checked={formData.rating} />))}
       </div>
-      <textarea value={formData.review} onChange={handleFieldChange} disabled={isMessageSending} className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" maxLength={MAX_REQURID_SYMBOL_COUNT}></textarea>
+      <textarea value={formData.review} onChange={handleFieldChange} disabled={isMessageSending} className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" maxLength={RequridSymbolCont.MaxRequridSymbolCont}></textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{MIN_REQURID_SYMBOL_COUNT} characters</b>.
+          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{RequridSymbolCont.MinRequridSymbolCont} characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!(formData.review.length >= MIN_REQURID_SYMBOL_COUNT && formData.rating) || isMessageSending}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!(formData.review.length >= RequridSymbolCont.MinRequridSymbolCont && formData.rating) || isMessageSending}>Submit</button>
       </div>
     </form>
   );

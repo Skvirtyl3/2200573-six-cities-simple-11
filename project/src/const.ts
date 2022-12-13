@@ -17,21 +17,24 @@ export enum AuthorizationStatus
   Unknown = 'UNKNOWN'
 }
 
-//#region Настройки карты
-export const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+export const enum UrlMarker {
+  UrlMarkerDefault = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
+  UrlMarkerCurrent = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg',
+}
 
-export const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+export const enum ZoomMap {
+  ZoomMapGlobal = 12,
+  ZoomMapRoom = 13,
+}
 
-export const ZOOM_MAP_GLOBAL = 12;
-export const ZOOM_MAP_ROOM = 13;
 export const LAYER_MAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 export const ATTRIBUTE_LAYER_MAP = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
-//#endregion Настройки карты
 
-export const MIN_REQURID_SYMBOL_COUNT = 50;
-export const MAX_REQURID_SYMBOL_COUNT = 300;
+export const enum RequridSymbolCont {
+  MinRequridSymbolCont = 50,
+  MaxRequridSymbolCont = 300,
+}
+
 export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3;
 export const DEFAULT_CITY = 'Paris';

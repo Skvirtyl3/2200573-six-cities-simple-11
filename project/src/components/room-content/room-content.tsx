@@ -3,7 +3,7 @@ import Gallery from '../../components/gallery/gallery';
 import OffersNearby from '../../components/offers-nearby/offers-nearby';
 import Reviews from '../../components/reviews/reviews';
 import Map from '../../components/map/map';
-import { REVIEW_ITEMS_COUNT, ZOOM_MAP_ROOM } from '../../const';
+import { REVIEW_ITEMS_COUNT, ZoomMap } from '../../const';
 import { GetRatingStileByNumber, Pluralize } from '../../helpers/helpers';
 import { StyleMap } from '../../types/map';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -149,7 +149,7 @@ function RoomContent({offerId}: RoomContentProp) : JSX.Element
               </div>
             </div>
             <section className="property__map map room-map">
-              <Map city={currentOffer.city} points={points} selectedPoint={currentOffer.location} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
+              <Map city={currentOffer.city} points={points} selectedPoint={currentOffer.location} zoom={ZoomMap.ZoomMapRoom} styleMap={StyleMap.Room}/>
             </section>
           </section>
           <div className="container">
