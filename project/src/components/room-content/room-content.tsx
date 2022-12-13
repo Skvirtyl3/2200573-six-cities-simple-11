@@ -13,6 +13,7 @@ import classNames from 'classnames';
 import ErrorScreen from '../error-screen/error-screen';
 import Loading from '../../pages/loading/loading';
 import { fetchCommentsAction, fetchHotelAction, fetchHotelsNearbyAction } from '../../store/api-actions';
+import './room-content.css';
 
 type RoomContentProp = {
   offerId: number;
@@ -147,7 +148,7 @@ function RoomContent({offerId}: RoomContentProp) : JSX.Element
                 <Reviews comments={commentsList} offerId={offerId}/>
               </div>
             </div>
-            <section className="property__map map" style={{backgroundImage: 'none'}}>
+            <section className="property__map map room-map">
               <Map city={currentOffer.city} points={points} selectedPoint={currentOffer.location} zoom={ZOOM_MAP_ROOM} styleMap={StyleMap.Room}/>
             </section>
           </section>

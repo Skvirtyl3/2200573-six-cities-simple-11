@@ -8,6 +8,8 @@ import { City } from '../../types/city';
 import { Location } from '../../types/location';
 import { getHoverOfferPoint } from '../../store/offer-search-process/selectors';
 import { useAppSelector } from '../../hooks';
+import classnames from 'classnames';
+import './map.css';
 
 type MapProps = {
   city: City | undefined;
@@ -34,9 +36,6 @@ const hoveredCustomIcon = new Icon({
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
-
-const styleMapMain = {height: '500px'};
-const styleMapRoom = {height: '500px', width: '1000px', marginLeft: 'auto', marginRight: 'auto'};
 
 function GetPointIcon(point: Location, selectedPoint: Location | undefined | null , hoveredPoint: Location | undefined | null) : Icon
 {
@@ -89,7 +88,7 @@ function Map(props: MapProps): JSX.Element {
     };
   }, [map, points, selectedPoint, hoveredPoint]);
 
-  return <div style={ styleMap === StyleMap.Main ? styleMapMain : styleMapRoom} ref={mapRef}></div>;
+  return <div className={classnames({'main-page__map': styleMap === StyleMap.Main}, {'room-page__map': styleMap === StyleMap.Room})} ref={mapRef}></div>;
 }
 
 export default Map;

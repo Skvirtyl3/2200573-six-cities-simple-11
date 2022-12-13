@@ -4,6 +4,7 @@ import {useState} from 'react';
 import { insertCommentsAction } from '../../store/api-actions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getMessageSending, getMessageSendingError } from '../../store/offer-room-data/selectors';
+import './review-form.css';
 
 type ReviewFormProp = {
   offerId: number;
@@ -35,7 +36,7 @@ function ReviewForm({offerId}:ReviewFormProp) : JSX.Element
     <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       {isMessageSendingError &&
-        <label style={{color:'red', display: 'flex'}}>При отправке сообщения возникла ошибка с сервером</label>}
+        <label className="reviews-error">При отправке сообщения возникла ошибка с сервером</label>}
       <div className="reviews__rating-form form__rating">
         {stars.map((item) => (<ReviewStar key={item.key} star={item} handleFieldChange={handleFieldChange} disabled={isMessageSending} checked={formData.rating} />))}
       </div>

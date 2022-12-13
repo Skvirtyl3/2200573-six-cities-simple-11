@@ -1,0 +1,9 @@
+.login__error
+{
+  color: red;
+}
+.login__input-wrapper--error
+{
+  border-color: red; 
+  margin-bottom: 12px;
+}

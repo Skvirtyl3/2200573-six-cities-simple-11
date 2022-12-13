@@ -8,6 +8,7 @@ import { getSearchDataLoadingStatus } from '../../store/offer-search-data/select
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useEffect } from 'react';
 import { setHoverOfferPoint } from '../../store/offer-search-process/offer-search-process';
+import './main-offers-container.css';
 
 
 function MainOffersContainer(): JSX.Element
@@ -47,7 +48,7 @@ function MainOffersContainer(): JSX.Element
     <div className="cities__places-container container">
       <OffersList offerParameters={offers}/>
       <div className="cities__right-section">
-        <section className="cities__map map" style={{backgroundImage: 'none'}}>
+        <section className="cities__map map main-map">
           <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} styleMap={StyleMap.Main}/>
         </section>
       </div>
