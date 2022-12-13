@@ -35,9 +35,10 @@ export const enum RequridSymbolCont {
   MaxRequridSymbolCont = 300,
 }
 
+export const REVIEW_ITEMS_COUNT = 10;
 export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3;
-export const DEFAULT_CITY = 'Paris';
+export const GALLERY_ITEMS_COUNT = 6;
 
 export enum OrderOffer
 {
@@ -72,6 +73,7 @@ export const DEFAULT_ORDER_OFFERS = OrderOffer.Popular;
 
 export const BACKEND_URL = 'https://11.react.pages.academy/six-cities-simple';
 export const REQUEST_TIMEOUT = 5000;
+export const AUTH_TOKEN_KEY_NAME = 'six-cities-2200573';
 
 export enum APIRoute {
   Hotels = '/hotels',
@@ -82,9 +84,7 @@ export enum APIRoute {
   Logout = '/logout',
 }
 
-export const AUTH_TOKEN_KEY_NAME = 'six-cities-2200573';
-
-export const GALLERY_ITEMS_COUNT = 6;
+export const DEFAULT_CITY = 'Paris';
 
 export const citys: City[] =
 [{
@@ -136,8 +136,6 @@ export const citys: City[] =
   }
 },
 ];
-
-export const REVIEW_ITEMS_COUNT = 10;
 
 export const stars: Star[] =
 [
