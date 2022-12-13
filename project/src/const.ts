@@ -31,11 +31,12 @@ export const ATTRIBUTE_LAYER_MAP = '&copy; <a href="https://www.openstreetmap.or
 //#endregion Настройки карты
 
 export const MIN_REQURID_SYMBOL_COUNT = 50;
+export const MAX_REQURID_SYMBOL_COUNT = 300;
 export const ONE_STAR_WIDTH = 20;
 export const NEAR_PLACES_COUNT = 3;
 export const DEFAULT_CITY = 'Paris';
 
-export enum OrderOffersEnum
+export enum OrderOffer
 {
   Popular = 1,
   LowToHighPrice = 2,
@@ -46,24 +47,24 @@ export enum OrderOffersEnum
 export const OrderOffers =
 [
   {
-    key: OrderOffersEnum.Popular,
-    title: 'Популярные'
+    key: OrderOffer.Popular,
+    title: 'Popular'
   },
   {
-    key: OrderOffersEnum.LowToHighPrice,
-    title: 'От дешёвых к дорогим'
+    key: OrderOffer.LowToHighPrice,
+    title: 'Price: low to high'
   },
   {
-    key: OrderOffersEnum.HighToLowPrice,
-    title: 'От дорогих к дешёвым'
+    key: OrderOffer.HighToLowPrice,
+    title: 'Price: high to low'
   },
   {
-    key: OrderOffersEnum.TopRatedFirst,
-    title: 'От высокого рейтинга к низкому'
+    key: OrderOffer.TopRatedFirst,
+    title: 'Top rated first'
   },
 ];
 
-export const DEFAULT_ORDER_OFFERS = OrderOffersEnum.Popular;
+export const DEFAULT_ORDER_OFFERS = OrderOffer.Popular;
 
 
 export const BACKEND_URL = 'https://11.react.pages.academy/six-cities-simple';
@@ -163,3 +164,10 @@ export const stars: Star[] =
     description: 'terribly'
   },
 ];
+
+export enum NameSpace {
+  OfferSearchData = 'OFFER_SEARCH_DATA',
+  OfferSearchProcess = 'OFFER_SEARCH_PROCESS',
+  OfferRoomData = 'OFFER_ROOM_DATA',
+  User = 'USER'
+}

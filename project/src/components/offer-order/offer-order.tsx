@@ -1,15 +1,16 @@
 import classNames from 'classnames';
 import { OrderOffers } from '../../const';
 import { useAppSelector, useAppDispatch } from '../../hooks';
-import { setOrderOffers } from '../../store/action';
+import { setOrderOffers } from '../../store/offer-search-process/offer-search-process';
 import { useEffect, useState } from 'react';
+import { getOrderOffer } from '../../store/offer-search-process/selectors';
 
 
 function OfferOrder() : JSX.Element
 {
   const dispatch = useAppDispatch();
 
-  const currentOrderKey = useAppSelector((state) => state.orderOffer);
+  const currentOrderKey = useAppSelector(getOrderOffer);
   const currenOrder = OrderOffers.find((item) => item.key === currentOrderKey);
   const [showForm, setShowForm] = useState(false);
 

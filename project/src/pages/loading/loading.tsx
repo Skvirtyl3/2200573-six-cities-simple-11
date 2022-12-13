@@ -1,6 +1,8 @@
 function Loading(): JSX.Element {
   return (
-    <img src="img/loading.gif" alt="loading..." width="100px" style={{marginLeft:'auto', marginRight:'auto'}}/>
+    <div style={{margin: '0 auto'}}>
+      <img src="img/loading.gif" alt="loading..." width="100px" style={{marginLeft:'auto', marginRight:'auto', display: 'flex'}}/>
+    </div>
   );
 }
 

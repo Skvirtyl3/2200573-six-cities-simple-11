@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
+import { getAuhtoriseUser, getIsAuthorised } from '../../store/user-process/selectors';
 
 type HeaderProps = {
   isNumberCitiesLogo: boolean;
@@ -13,8 +14,8 @@ type HeaderProps = {
 function Header(props: HeaderProps): JSX.Element
 {
   const dispatch = useAppDispatch();
-  const auhtoriseUser = useAppSelector((state) => state.auhtoriseUser);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const auhtoriseUser = useAppSelector(getAuhtoriseUser);
+  const isAuthorised = useAppSelector(getIsAuthorised);
 
   function handleLinkClick(e: React.MouseEvent<HTMLAnchorElement>): void {
     e.preventDefault();
@@ -44,7 +45,7 @@ function Header(props: HeaderProps): JSX.Element
                       <span className="header__user-name user__name">{auhtoriseUser.email}</span>
                     </div>
                   </li>}
-                {authorizationStatus === AuthorizationStatus.Auth ?
+                {isAuthorised ?
                   <li className="header__nav-item">
                     <Link className="header__nav-link" onClick={handleLinkClick} to='\'>
                       <span className="header__signout">Sign out</span>
