@@ -5,6 +5,7 @@ import { setOrderOffers } from '../../store/offer-search-process/offer-search-pr
 import { useEffect, useState } from 'react';
 import { getOrderOffer } from '../../store/offer-search-process/selectors';
 
+
 function OfferOrder() : JSX.Element
 {
   const dispatch = useAppDispatch();
@@ -26,6 +27,24 @@ function OfferOrder() : JSX.Element
     setShowForm(!value);
   }
 
+  useEffect(() => {
+    const handleDocumentClick = (evt: MouseEvent) => {
+      const target = evt.target as Element;
+
+      if (showForm && (!target.closest('.places__sorting-type') && !target.closest('.places__options'))) {
+        evt.preventDefault();
+
+        setShowForm(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, [showForm]);
+
 
   useEffect(() => {
     const handleDocumentClick = (evt: MouseEvent) => {
@@ -43,6 +62,7 @@ function OfferOrder() : JSX.Element
       document.removeEventListener('click', handleDocumentClick);
     };
   }, [showForm]);
+
 
   return(
     <div className="places__sorting">
