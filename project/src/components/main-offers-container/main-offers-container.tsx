@@ -5,7 +5,9 @@ import { StyleMap } from '../../types/map';
 import { selectFilterCity, selectFilterOffers } from '../../store/selector';
 import Loading from '../../pages/loading/loading';
 import { getSearchDataLoadingStatus } from '../../store/offer-search-data/selectors';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useEffect } from 'react';
+import { setHoverOfferPoint } from '../../store/offer-search-process/offer-search-process';
 
 
 function MainOffersContainer(): JSX.Element
@@ -13,6 +15,11 @@ function MainOffersContainer(): JSX.Element
   const city = useAppSelector(selectFilterCity);
   const offers = useAppSelector(selectFilterOffers);
   const isDataLoading = useAppSelector(getSearchDataLoadingStatus);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setHoverOfferPoint(undefined));
+  });
 
   const points = offers.flatMap((item) => item.location);
 
