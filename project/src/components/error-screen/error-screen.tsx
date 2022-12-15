@@ -1,3 +1,5 @@
+import './error-screen.css';
+
 type ErrorScreenProp = {
   errorText: string;
   onClick: () => void;
@@ -7,9 +9,9 @@ function ErrorScreen({onClick, errorText}: ErrorScreenProp): JSX.Element {
 
   return (
     <main className="page__main page__main--property">
-      <div style={{marginLeft: 'auto', marginRight: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+      <div className="error-screen">
         <p>{errorText}</p>
-        <button style={{color: '#fff', backgroundColor: '#4481c3', borderRadius: '4px'}}
+        <button className="try-button"
           onClick={onClick}
           type="button"
         >
