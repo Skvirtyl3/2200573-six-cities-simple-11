@@ -1,0 +1,11 @@
+.loading__main
+{
+  margin: 0 auto;
+}
+
+.loading__img
+{
+  margin-left:auto; 
+  margin-right:auto; 
+  display: flex;
+}

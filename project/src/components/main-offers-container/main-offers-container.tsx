@@ -1,11 +1,14 @@
 import OffersList from '../offers-list/offers-list';
-import { ZOOM_MAP_GLOBAL } from '../../const';
+import { ZoomMap } from '../../const';
 import Map from '../map/map';
 import { StyleMap } from '../../types/map';
 import { selectFilterCity, selectFilterOffers } from '../../store/selector';
 import Loading from '../../pages/loading/loading';
 import { getSearchDataLoadingStatus } from '../../store/offer-search-data/selectors';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useEffect } from 'react';
+import { setHoverOfferPoint } from '../../store/offer-search-process/offer-search-process';
+import './main-offers-container.css';
 
 
 function MainOffersContainer(): JSX.Element
@@ -13,6 +16,11 @@ function MainOffersContainer(): JSX.Element
   const city = useAppSelector(selectFilterCity);
   const offers = useAppSelector(selectFilterOffers);
   const isDataLoading = useAppSelector(getSearchDataLoadingStatus);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setHoverOfferPoint(undefined));
+  });
 
   const points = offers.flatMap((item) => item.location);
 
@@ -40,8 +48,8 @@ function MainOffersContainer(): JSX.Element
     <div className="cities__places-container container">
       <OffersList offerParameters={offers}/>
       <div className="cities__right-section">
-        <section className="cities__map map" style={{backgroundImage: 'none'}}>
-          <Map city={city} points={points} zoom={ZOOM_MAP_GLOBAL} styleMap={StyleMap.Main}/>
+        <section className="cities__map map main-map">
+          <Map city={city} points={points} zoom={ZoomMap.ZoomMapGlobal} styleMap={StyleMap.Main}/>
         </section>
       </div>
     </div>);

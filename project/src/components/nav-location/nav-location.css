@@ -1,0 +1,10 @@
+.locations__button-active
+{
+  border: none;
+}
+
+.locations__button-not-active
+{
+  background-color: transparent;
+  border: none;
+}
